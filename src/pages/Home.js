@@ -33,7 +33,6 @@ const Home = () => {
                         <IonAccordionGroup animated={true}>
                             <IonAccordion value="first">
                                 <IonItem slot="header" color="light">
-                                    {/* <IonLabel>Pills Reminder</IonLabel> */}
                                     <div className='hours'>
                                         <p >08:45</p>
                                         <span className='date'>
@@ -52,6 +51,25 @@ const Home = () => {
                     <div className='appointR'>
                         <h2>Medical Appointment </h2>
                         <span>See All</span>
+                    </div>
+                    <div className='fourth'>
+                        <IonAccordionGroup animated={true}>
+                            <IonAccordion value="first">
+                                <IonItem slot="header" color="light">
+                                    <div className='hours'>
+                                        <p >08:45</p>
+                                        <span className='date'>
+                                            <p>Today</p>
+                                            <p>09/09/2022</p>
+                                        </span>
+                                    </div>
+                                    <div className='bullet'></div>
+                                </IonItem>
+                                <div className="ion-padding" slot="content">
+                                    <p>Hello world</p>
+                                </div>
+                            </IonAccordion>
+                        </IonAccordionGroup>
                     </div>
                 </div>
             </IonContent >

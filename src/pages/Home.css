@@ -1,6 +1,11 @@
 .main {
   --background: rgba(14, 108, 148, 0.69);
-  /* position: absolute; */
+  /* --offset-bottom: auto !important; */
+  /* --overflow: hidden; */
+  overflow: auto;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 .first h2 {
   position: absolute;
@@ -73,6 +78,15 @@
   height: 123px;
   left: 12px;
   top: 320px;
+  background: #ffffff;
+  /* border-radius: 15px; */
+}
+.fourth {
+  position: absolute;
+  width: 250px;
+  height: 123px;
+  left: 12px;
+  top: 480px;
   background: #ffffff;
   /* border-radius: 15px; */
 }

@@ -3,16 +3,16 @@ import {
     IonHeader,
     IonToolbar,
     IonTitle,
+    IonContent,
 } from '@ionic/react';
+import Header from '../components/Header';
 const Setting = () => {
     return (
         <IonPage >
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Setting</IonTitle>
-                </IonToolbar>
-            </IonHeader>
-        </IonPage>
+        <IonContent className='main'>
+            <Header title='Settings' />
+        </IonContent>
+    </IonPage>
     );
 };
 export default Setting;
