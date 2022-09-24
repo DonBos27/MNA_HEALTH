@@ -1,0 +1,7 @@
+{
+  "name": "MNA_HEALTH",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
