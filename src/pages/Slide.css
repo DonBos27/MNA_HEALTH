@@ -1,0 +1,6 @@
+.bullet {
+    --bullet-background-active: #7f2f86;
+  }
+  ion-slides {
+    height: 100%;
+  }
