@@ -1,4 +1,4 @@
-import { IonContent, IonPage, IonSlides, IonSlide } from '@ionic/react';
+import { IonContent, IonPage, IonSlides, IonSlide, IonButton, IonNavLink } from '@ionic/react';
 import SlideContent from '../components/SlideContent';
 import Check from '../pictures/check.gif';
 import MedicalInfo from '../pictures/medical_info.gif';
@@ -7,15 +7,15 @@ import './Slide.css';
 const slideOpts = {
   initialSlide: 0,
   speed: 400,
-  // autoplay: {
-  //   delay: 2000
-  // }
+  autoplay: {
+    delay: 3000
+  }
 };
 const Slide = () => {
   return (
     <IonPage >
-      <IonContent >
-        <IonSlides pager={true} options={slideOpts} className="bullet">
+      <IonContent className='slider'>
+        <IonSlides pager={true} options={slideOpts} className="slider-bullet">
           <IonSlide>
             <SlideContent
               title="Medical reminder"
@@ -38,7 +38,9 @@ const Slide = () => {
               text="hospital"
               explain="You can have your medical report everywhere and everytime"
               photo={Check}
+              button="button"
             />
+            <IonButton className='button'>Get Started</IonButton>
           </IonSlide>
         </IonSlides>
       </IonContent>

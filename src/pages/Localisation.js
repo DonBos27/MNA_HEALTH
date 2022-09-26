@@ -40,26 +40,13 @@ const Localisation = () => {
                     width: 275,
                     height: 290,
                     marginTop: 0,
-                    marginBottom:50
+                    marginBottom: 50
                 }}></capacitor-google-map>
 
-                <button onClick={createMap} style={{marginBottom:"25px"}}>Create Map</button>
+                <button onClick={createMap} style={{ marginBottom: "25px" }}>Create Map</button>
             </div>
         </IonPage>
     )
 }
-    // return (
-    //     <IonPage >
-    //         
-    //     </IonPage>
-    // );
     ;
-export default Localisation;
-
-
-
-
-// const MyMap = () => {
-
-
-// export default MyMap;
+export default Localisation; 

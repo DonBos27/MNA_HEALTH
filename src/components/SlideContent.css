@@ -42,25 +42,3 @@
 .images {
   position: absolute;
 }
-.button {
-  position: absolute;
-  width: 100px;
-  height: 40px;
-  left: 90px;
-  top: 80px;
-  --background: #7f2f86;
-  border-radius: 50%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 10px;
-  font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: 0.3s;
-  border: none;
-  outline: none;
-}
