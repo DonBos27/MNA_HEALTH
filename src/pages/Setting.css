@@ -1,4 +1,16 @@
 .main {
-    --background: rgba(14, 108, 148, 0.69);
-    /* position: absolute; */
-  }
+  --background: rgba(14, 108, 148, 0.69);
+  /* position: absolute; */
+}
+.set {
+  padding: 0 5%;
+}
+.set h2 {
+  margin-left: 5%;
+  font-size: 15px;
+  font-weight: bold;
+  padding-top: 30px;
+}
+h2 {
+  color: white;
+}

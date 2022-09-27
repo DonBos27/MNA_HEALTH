@@ -1,13 +1,7 @@
 .main {
   --background: rgba(14, 108, 148, 0.69);
-  /* --height: 900px; */
-  /* --offset-bottom: auto !important; */
-  /* --overflow: hidden; */
-  overflow: auto;
 }
-::-webkit-scrollbar {
-  display: none;
-}
+
 .first h2 {
   position: absolute;
   width: 212px;

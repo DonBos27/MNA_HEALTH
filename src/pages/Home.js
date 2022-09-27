@@ -16,8 +16,8 @@ const Home = () => {
                     <div className='first'>
                         <h2>Medical Features</h2>
                         <div className="container" >
-                            <div className="scrolling-wrapper" scrollY="true">
-                                <div className='card' ></div>
+                            <div className="scrolling-wrapper" scrollY="true" >
+                                <div className='card' href="#"></div>
                                 <div className='card' ></div>
                                 <div className='card' ></div>
                             </div>
