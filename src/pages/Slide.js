@@ -4,6 +4,8 @@ import Check from '../pictures/check.gif';
 import MedicalInfo from '../pictures/medical_info.gif';
 import RedCross from '../pictures/medical-red-cross.gif';
 import './Slide.css';
+import { useHistory } from 'react-router';
+import TabsButton from './TabsButton';
 const slideOpts = {
   initialSlide: 0,
   speed: 400,
@@ -12,6 +14,10 @@ const slideOpts = {
   }
 };
 const Slide = () => {
+  const history = useHistory();
+  const slideWithNav = () => {
+    history.push('/setting', { direction: "forward" });
+  }
   return (
     <IonPage >
       <IonContent className='slider'>
@@ -38,9 +44,8 @@ const Slide = () => {
               text="hospital"
               explain="You can have your medical report everywhere and everytime"
               photo={Check}
-              button="button"
             />
-            <IonButton className='button'>Get Started</IonButton>
+            <TabsButton button="Get Started"/>
           </IonSlide>
         </IonSlides>
       </IonContent>

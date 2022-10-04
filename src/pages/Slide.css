@@ -24,8 +24,8 @@ ion-slides {
   font-weight: 700;
   text-align: center;
   text-decoration: none;
-  cursor: pointer;
-  transition: 0.3s;
+  /* cursor: pointer; */
+  /* transition: 0.3s; */
   border: none;
   outline: none;
 }

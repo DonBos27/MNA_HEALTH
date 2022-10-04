@@ -1,20 +1,27 @@
 import {
     IonPage,
     IonContent,
+    IonTabBar,
+    IonTabButton,
+    IonIcon,
+    IonLabel,
 } from '@ionic/react';
+import { cog, home, map } from 'ionicons/icons';
 import Header from '../components/Header';
 import { person, chevronForward, key, reader, newspaper, notifications, lockClosed } from "ionicons/icons";
 import "./Setting.css";
 import SettingCard from "../components/SettingCard";
+import TabsButton from './TabsButton';
 
 const Setting = () => {
     return (
         <IonPage >
-            <IonContent fullscreen
+            <IonContent
                 scrollEvents={true}
                 className="main"
-            > <div className="set">
-                    <Header title='Settings' />
+            >
+                <Header title='Settings' />
+                <div className="set">
                     <h2 className='settingTitle' style={{ paddingTop: "120px" }}>Profile</h2>
                     <SettingCard
                         IconLeft={person}
@@ -40,6 +47,20 @@ const Setting = () => {
                         BottomLabel="Notification"
                     /></div>
             </IonContent>
+            <IonTabBar slot="bottom">
+                <IonTabButton tab="home" href="/home">
+                    <IonIcon icon={home} />
+                    <IonLabel>Home</IonLabel>
+                </IonTabButton>
+                <IonTabButton tab="localisation" href="/localisation">
+                    <IonIcon icon={map} />
+                    <IonLabel>Map</IonLabel>
+                </IonTabButton>
+                <IonTabButton tab="setting" href="/setting">
+                    <IonIcon icon={cog} />
+                    <IonLabel>Setting</IonLabel>
+                </IonTabButton>
+            </IonTabBar>
         </IonPage>
     );
 };
