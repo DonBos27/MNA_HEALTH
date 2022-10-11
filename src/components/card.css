@@ -1,45 +1,79 @@
 ion-modal#example-modal {
-    --height: 50%;
-    --width:250px;
-    --border-radius: 16px;
-    --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  }
-  
-  ion-modal#example-modal::part(backdrop) {
-    background: rgba(209, 213, 219);
-    opacity: 1;
-  }
-  
-  ion-modal#example-modal ion-toolbar {
-    --background: rgb(14 116 144);
-    --color: white;
-  }
-  .cardmodal{
-    position: absolute;
-    width: 92%;
-    border-radius: 16px;
-    margin-top: 320px;
-    left:0px ;
-  }
-  .mod{
-    width: 100%;
-    border-radius: 16px;
-    margin-top: 320px;
-    left:-5px ;
-  }
-  .hoursC{
-    font-style: normal;
-    font-weight: 800;
-    line-height: 20px;
-    color: #000000;
-    /* margin-left: 10px; */
-    margin-top: 10px;
-  }
-  .dateC h5{
-    font-style: normal;
-    font-weight: 800;
-    line-height: 10px;
-    color: #000000;
-    /* margin-left: 10px; */
-    margin-top: 10px;
-  }
+  --height: 50%;
+  --width: 250px;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal#example-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal#example-modal ion-toolbar {
+  --background: rgb(14 116 144);
+  --color: white;
+}
+
+
+/* Language: css */
+.pillscard {
+  position: absolute;
+  width: 92%;
+  height: 123px;
+  /* left: 12px; */
+  top: 317px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+.pillshours p {
+  position: absolute;
+  width: 100px;
+  height: 35px;
+  left: 16px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 29px;
+  line-height: 35px;
+
+  color: #000000;
+}
+.pillsdate {
+  position: absolute;
+  width: 78px;
+  /* height: 35px; */
+  left: 16px;
+  top: 55px;
+
+  /* font-family: "Sen"; */
+  font-style: normal;
+  /* font-weight: 800; */
+  font-size: 12px;
+  /* line-height: 35px; */
+  /* identical to box height */
+  color: #000000;
+}
+#day {
+  font-weight: 800;
+}
+.pillslist {
+  position: absolute;
+  width: 142px;
+  height: 18px;
+  left: 135px;
+  top: 40px;
+
+  /* font-family: "Sen"; */
+  font-style: normal;
+  /* font-weight: 800; */
+  font-size: 13px;
+  line-height: 18px;
+  /* identical to box height */
+
+  color: red;
+}
+.pillslist span{
+  color: black;
+}

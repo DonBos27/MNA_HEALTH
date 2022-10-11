@@ -6,6 +6,7 @@ import {
     IonTabButton,
     IonLabel,
 } from '@ionic/react';
+import TabBar from '../components/TabBar';
 import './Home.css';
 import { cog, home, map } from 'ionicons/icons';
 import Header from '../components/Header';
@@ -31,7 +32,7 @@ const Home = () => {
                     </div>
                     <div className='pillsR'>
                         <h2>Pills Reminder </h2>
-                        <span>See All</span>
+                        <IonLabel href="/setting">See All</IonLabel>
                     </div>
                     <CardPills />
                     <div className='appointR'>
@@ -41,20 +42,7 @@ const Home = () => {
                     <CardDoctor />
                 </div>
             </IonContent >
-            <IonTabBar slot="bottom">
-                <IonTabButton tab="home" href="/home">
-                    <IonIcon icon={home} />
-                    <IonLabel>Home</IonLabel>
-                </IonTabButton>
-                <IonTabButton tab="localisation" href="/localisation">
-                    <IonIcon icon={map} />
-                    <IonLabel>Map</IonLabel>
-                </IonTabButton>
-                <IonTabButton tab="setting" href="/setting">
-                    <IonIcon icon={cog} />
-                    <IonLabel>Setting</IonLabel>
-                </IonTabButton>
-            </IonTabBar>
+            <TabBar />
         </IonPage >
     );
 };

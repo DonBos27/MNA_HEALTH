@@ -11,7 +11,7 @@
   margin-top: 0px;
 }
 .loginForm {
-  margin-top: 50px;
+  margin-top: 10px;
   /* top: 100px; */
 }
 .loginForm input {
@@ -50,4 +50,49 @@
 }
 .input {
   background-color: #d9d9d9;
+}
+#logo {
+  margin-top: 45px;
+  width: 75px;
+  margin-left: 100px;
+  margin-bottom: 40px;
+}
+#fullName {
+  margin-top: 65px;
+  padding-left: 10px;
+}
+#email {
+  margin-top: 20px;
+  padding-left: 10px;
+}
+#password {
+  margin-top: 20px;
+  padding-left: 10px;
+}
+#confirmPassword {
+  margin-top: 20px;
+  padding-left: 10px;
+  margin-bottom: 50px;
+}
+#dateOfBirth {
+  margin-top: 20px;
+  padding-left: 10px;
+}
+.camera {
+  width: 75px;
+  height: 75px;
+  background-color: #d9d9d9;
+  margin-left: 105px;
+  border-radius: 50%;
+  margin-top: -25px;
+  position: absolute;
+}
+.camera .camIcon {
+  margin-top: 25px;
+  margin-left: 28px;
+}
+.Register{
+  margin-bottom: 30px; 
+  font-weight: bold;
+  margin-top: 10px
 }

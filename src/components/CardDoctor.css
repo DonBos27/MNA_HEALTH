@@ -19,6 +19,7 @@ ion-modal#example-modal {
     width: 92%;
     border-radius: 16px;
     margin-top: 500px;
+    margin-bottom: 105px;
   }
   .doctortime{
     width: 206px;

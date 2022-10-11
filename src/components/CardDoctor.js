@@ -12,8 +12,8 @@ import { calendar, watch } from 'ionicons/icons';
 import './CardDoctor.css';
 const CardDoctor = () => {
     return (
-        <div>
-            <IonCard className='carddoctor' >
+        <div >
+            <IonCard className='carddoctor'>
                 <IonCardHeader>
                     <IonCardTitle>
                         <h2 style={{ paddingRight: "45px",color:"red" }}>DR DANIEL</h2>

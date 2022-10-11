@@ -11,13 +11,25 @@ const CardPills = () => {
         modal.current?.dismiss();
     }
     return (
-        <div>
-            <IonCard id="open-modal" className='cardmodal' href='/setting'>
+        <div >
+            <IonCard className='pillscard' href='/setting'>
+                <div className='pillshours'>
+                    <p>08:45</p>
+                    <li className='pillslist'>
+                        <span>Para C</span> <br/>
+                    </li>
+                </div>
+                <div className='pillsdate'>
+                    <p id='day'>Today</p>
+                    <p>04/09/2022</p>
+                </div>
+            </IonCard>
+            {/* <IonCard id="open-modal" className='cardmodal' href='/setting'>
                 <IonItem>
-                    <h2 style={{ paddingRight: "45px" }} className='hoursC'>20:45</h2>
-                    <IonLabel style={{ paddingTop: "10px" }}>
-                        <li style={{ color: "red" }}>
-                            <span style={{ color: "black" }}>Para C</span>
+                    <h2 className='hoursC'>20:45</h2>
+                    <IonLabel className="label">
+                        <li >
+                            <span >Para C</span>
                         </li>
                     </IonLabel>
                 </IonItem>
@@ -27,41 +39,7 @@ const CardPills = () => {
                         <p>09/09/2022</p>
                     </span>
                 </IonCardContent>
-            </IonCard>
-            {/* <IonModal id="example-modal" ref={modal} trigger="open-modal" className='mod'>
-                <IonContent>
-                    <IonList>
-                        <IonItem>
-                            <IonCard id="open-modal" >
-                                <IonItem>
-                                    <h2 style={{ paddingRight: "45px" }} className='hoursC'>08:45</h2>
-                                    <IonLabel style={{ paddingTop: "10px" }}>Ibuprofen</IonLabel>
-                                </IonItem>
-                                <IonCardContent>
-                                    <span className='dateC'>
-                                        <h5>Today</h5>
-                                        <p>09/09/2022</p>
-                                    </span>
-                                </IonCardContent>
-                            </IonCard>
-                        </IonItem>
-                        <IonItem>
-                            <IonCard id="open-modal" >
-                                <IonItem>
-                                    <h2 style={{ paddingRight: "45px" }} >12:45</h2>
-                                    <IonLabel style={{ paddingTop: "10px" }}>Cough Silent</IonLabel>
-                                </IonItem>
-                                <IonCardContent>
-                                    <span className='dateC'>
-                                        <h5>Today</h5>
-                                        <p>09/09/2022</p>
-                                    </span>
-                                </IonCardContent>
-                            </IonCard>
-                        </IonItem>
-                    </IonList>
-                </IonContent>
-            </IonModal> */}
+            </IonCard> */}
         </div>
     );
 };

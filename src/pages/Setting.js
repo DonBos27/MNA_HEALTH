@@ -6,12 +6,11 @@ import {
     IonIcon,
     IonLabel,
 } from '@ionic/react';
-import { cog, home, map } from 'ionicons/icons';
 import Header from '../components/Header';
 import { person, chevronForward, key, reader, newspaper, notifications, lockClosed } from "ionicons/icons";
 import "./Setting.css";
 import SettingCard from "../components/SettingCard";
-import TabsButton from './TabsButton';
+import TabBar from '../components/TabBar';
 
 const Setting = () => {
     return (
@@ -47,20 +46,7 @@ const Setting = () => {
                         BottomLabel="Notification"
                     /></div>
             </IonContent>
-            <IonTabBar slot="bottom">
-                <IonTabButton tab="home" href="/home">
-                    <IonIcon icon={home} />
-                    <IonLabel>Home</IonLabel>
-                </IonTabButton>
-                <IonTabButton tab="localisation" href="/localisation">
-                    <IonIcon icon={map} />
-                    <IonLabel>Map</IonLabel>
-                </IonTabButton>
-                <IonTabButton tab="setting" href="/setting">
-                    <IonIcon icon={cog} />
-                    <IonLabel>Setting</IonLabel>
-                </IonTabButton>
-            </IonTabBar>
+            <TabBar />
         </IonPage>
     );
 };
