@@ -38,7 +38,7 @@ const Home = () => {
                                     <img src={Doctor} scrolly='true' style={{ marginRight: "15px", width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
                                 </span>
                                 <span scrolly='true'>
-                                    <img src={Report} scrolly='true' style={{ marginRight: "3n0px",width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
+                                    <img src={Report} scrolly='true' style={{ marginRight: "30px",width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
                                 </span>
                             </div>
                         </div>
