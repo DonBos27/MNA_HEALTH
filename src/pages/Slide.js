@@ -20,12 +20,12 @@ const Slide = () => {
   }
   return (
     <IonPage >
-      <IonContent className='slider'>
+      <IonContent className='main'>
         <IonSlides pager={true} options={slideOpts} className="slider-bullet">
           <IonSlide>
             <SlideContent
-              title="Medical reminder"
-              text="assistance"
+              title="Medical Reminder"
+              text="Assistance"
               explain="Reminding you of your pills as quick as possible"
               photo={RedCross}
             />
@@ -40,8 +40,8 @@ const Slide = () => {
           </IonSlide>
           <IonSlide>
             <SlideContent
-              title="Localisation of a near"
-              text="hospital"
+              title="Finds Nearest"
+              text="Hospital"
               explain="You can have your medical report everywhere and everytime"
               photo={Check}
             />

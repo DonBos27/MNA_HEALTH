@@ -9,6 +9,7 @@ import Logo from "../pictures/logo.svg";
 import './Register.css';
 import { camera } from "ionicons/icons";
 import Home from "./Home";
+import Login from "./Login";
 function Register() {
     return (
         <IonPage >
@@ -50,7 +51,7 @@ function Register() {
                             className="input"
                             id="confirmPassword"
                         ></input>
-                        <IonNavLink routerDirection="forward" component={() => <Home />}>
+                        <IonNavLink routerDirection="forward" component={() => <Login />}>
                             <button type="submit" className="Register">Register</button>
                         </IonNavLink>
                     </div>

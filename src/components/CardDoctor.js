@@ -12,22 +12,22 @@ import { calendar, watch } from 'ionicons/icons';
 import './CardDoctor.css';
 const CardDoctor = () => {
     return (
-        <div >
-            <IonCard className='carddoctor'>
-                <IonCardHeader>
-                    <IonCardTitle>
-                        <h2 style={{ paddingRight: "45px",color:"red" }}>DR DANIEL</h2>
-                    </IonCardTitle>
-                    <IonCardTitle>
-                        <h5 style={{ paddingRight: "45px",color:"red" }}>Dermatogist</h5>
-                    </IonCardTitle>
-                </IonCardHeader>
-                <IonCardContent>
+        <div className='carddoctor'>
+            <IonCard >
+                <div>
+                    <div>
+                        <h2 style={{ paddingLeft: "15px",color:"red" }}>DR DANIEL</h2>
+                    </div>
+                    <div>
+                        <h5 style={{ paddingLeft: "15px",color:"red" }}>Dermatogist</h5>
+                    </div>
+                </div>
+                <div>
                     <div className="doctortime">
                         <IonIcon icon={watch} style={{ margin: "20px" }} />
-                        {/* <IonIcon icon={calendar} style={{ marginLeft: "110px" }} /> */}
+                        <IonIcon icon={calendar} style={{ marginLeft: "115px",marginBottom:"20px" }} />
                     </div>
-                </IonCardContent>
+                </div>
             </IonCard>
         </div>
     )

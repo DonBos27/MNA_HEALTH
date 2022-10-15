@@ -1,0 +1,26 @@
+.reminder{
+    text-align:center;
+    color:green;
+    position:relative;
+    bottom:-12px;
+}
+.btn{
+    position: absolute;
+    text-align:center;
+    width:60px;
+    height: 60px;
+    padding:10px;
+    border-radius: 50%;
+    margin-top: 470px;
+    margin-left: 200px;
+    background: #7f2f86;
+    color: white;
+}
+.pills-card{
+    margin-top:150px ;
+    padding:12px;
+    height: 250px;
+}
+.content{
+    --background: rgba(14, 108, 148, 0.1);
+}

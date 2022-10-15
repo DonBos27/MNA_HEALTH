@@ -35,6 +35,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Register from './pages/Register';
+import PillsReminder from './pages/PillsReminder';
 
 setupIonicReact();
 
@@ -56,6 +57,10 @@ const App = () => (
         </Route>
         <Route path="/register">
           <Register />
+        </Route>
+        <Route path="/pillsreminder">
+          {/* <Redirect to="/pillsreminder" /> */}
+          <PillsReminder />
         </Route>
         <Route exact path="/">
           {/* <Redirect to="/register" /> */}

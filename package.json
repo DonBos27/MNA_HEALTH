@@ -27,6 +27,7 @@
     "jetifier": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-google-places-autocomplete": "^3.4.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.0",

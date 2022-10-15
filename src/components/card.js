@@ -12,7 +12,7 @@ const CardPills = () => {
     }
     return (
         <div >
-            <IonCard className='pillscard' href='/setting'>
+            <IonCard className='pillscard' href='/pillsreminder'>
                 <div className='pillshours'>
                     <p>08:45</p>
                     <li className='pillslist'>
