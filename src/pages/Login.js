@@ -62,7 +62,7 @@ const Login = () => {
                     <IonNavLink routerDirection="forward" component={() => <Home />}>
                         <button type="submit" className="Login">Login</button>
                     </IonNavLink>
-                    <p style={{ marginTop: "70px", marginLeft: "95px", fontSize: "12px", color: "white" }}>Do not have an account ?</p>
+                    <p style={{ marginTop: "70px", marginLeft: "130px", fontSize: "12px", color: "white" }}>Do not have an account ?</p>
                     <IonNavLink routerDirection="forward" component={() => <Register />}>
                         <button type="submit" className="Register">Register</button>
                     </IonNavLink>

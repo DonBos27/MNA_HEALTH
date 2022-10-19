@@ -4,20 +4,15 @@ import Check from '../pictures/check.gif';
 import MedicalInfo from '../pictures/medical_info.gif';
 import RedCross from '../pictures/medical-red-cross.gif';
 import './Slide.css';
-import { useHistory } from 'react-router';
 import TabsButton from './TabsButton';
 const slideOpts = {
   initialSlide: 0,
   speed: 400,
-  autoplay: {
-    delay: 3000
-  }
+  // autoplay: {
+  //   delay: 3000
+  // }
 };
 const Slide = () => {
-  const history = useHistory();
-  const slideWithNav = () => {
-    history.push('/setting', { direction: "forward" });
-  }
   return (
     <IonPage >
       <IonContent className='main'>

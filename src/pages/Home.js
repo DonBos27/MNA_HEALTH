@@ -21,6 +21,10 @@ const Home = () => {
         console.log('pills');
         history.push('/pillsreminder', { direction: "forward" });
     }
+    const appoint = () => {
+        console.log('appoint');
+        history.push('/appointreminder', { direction: "forward" });
+    }
 
     return (
         <IonPage >
@@ -35,7 +39,7 @@ const Home = () => {
                                     <img src={Pills} scrolly='true' style={{ marginRight: "15px",width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px"  }} onClick={pills}/>
                                 </span>
                                 <span scrolly='true'>
-                                    <img src={Doctor} scrolly='true' style={{ marginRight: "15px", width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
+                                    <img src={Doctor} scrolly='true' style={{ marginRight: "15px", width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} onClick={appoint}/>
                                 </span>
                                 <span scrolly='true'>
                                     <img src={Report} scrolly='true' style={{ marginRight: "30px",width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />

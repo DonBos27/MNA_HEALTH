@@ -5,7 +5,7 @@
   position: absolute;
   width: 277px;
   height: 41px;
-  left: 2px;
+  left: 40px;
   top: 75px;
   font-family: "Sen";
   font-style: normal;
@@ -17,9 +17,9 @@
 .title2 {
   
   position: absolute;
-  width: 159px;
+  width: 165px;
   height: 39px;
-  left: 65px;
+  left: 100px;
   top: 110px;
   font-family: 'Sen';
   font-style: normal;
@@ -31,9 +31,10 @@
 .text {
   position: absolute;
   width: 268px;
+  /* text-align: center; */
   height: 14px;
-  left: 5px;
-  top: 420px;
+  left: 45px;
+  top: 520px;
   font-style: normal;
   font-size: 12px;
   line-height: 14px;
@@ -41,4 +42,6 @@
 }
 .images {
   position: absolute;
+  margin-left: 45px;
+  margin-top:50px;
 }

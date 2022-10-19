@@ -23,6 +23,7 @@
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
     "axios": "^1.0.0",
+    "firebase": "^9.12.1",
     "ionicons": "^6.0.3",
     "jetifier": "^2.0.0",
     "react": "^18.2.0",

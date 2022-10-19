@@ -3,6 +3,7 @@
 }
 ion-slides {
   height: 100%;
+  width:100%;
 }
 .slider {
   --background: #0e6c94;
@@ -11,8 +12,8 @@ ion-slides {
   position: absolute;
   width: 100px;
   height: 40px;
-  left: 90px;
-  top: 480px;
+  left: 130px;
+  top: 630px;
   --background: #7f2f86;
   border-radius: 50%;
   margin: 0 auto;

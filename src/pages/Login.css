@@ -17,19 +17,20 @@
   margin-top: 250px;
 }
 .loginInput input {
-  border: black;
+  border: orangered;
   border-radius: 10px;
   background-color: #d9d9d9;
-  margin-left: 35px;
+  /* color:black; */
+  margin-left: 75px;
   height: 35px;
   box-shadow: 5px 5px 5px #222428;
   margin-top: 20px;
 }
 .logo {
   position: absolute;
-  margin-top: 85px;
-  width: 75px;
-  margin-left: 100px;
+  margin-top: 80px;
+  width: 105px;
+  margin-left: 130px;
 }
 .Login {
   margin-bottom: 30px;
@@ -43,19 +44,20 @@
 }
 .loginInput .Register {
   position: absolute;
-  left: 16.36%;
-  right: 15.06%;
+  left: 26.36%;
+  /* right: 15.06%; */
+  width: 50%;
   height: 40px;
   margin-top: 0px;
-  color: white;
+  /* color: white; */
   background: #7f2f86;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
 .loginInput button {
   position: absolute;
-  left: 16.36%;
-  right: 15.06%;
+  left: 26.36%;
+  width: 50%;
   height: 40px;
   margin-top: 75px;
   color: white;
@@ -65,18 +67,14 @@
 }
 #LoginEmail {
   padding-left: 10px;
-  color: white;
 }
 #LoginPassword {
   padding-left: 10px;
-  color: white;
 }
 .line {
-  /* position: absolute; */
   width: 97.01px;
   height: 0px;
   left: 47px;
-  /* top: 96px; */
   margin-top: 100px;
   border: 1px solid rgba(0, 0, 0, 0);
   transform: rotate(-0.59deg);

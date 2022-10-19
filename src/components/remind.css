@@ -1,26 +1,71 @@
-.reminder{
-    text-align:center;
-    color:green;
-    position:relative;
-    bottom:-12px;
+
+.btn {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 50%;
+  margin-top: 600px;
+  margin-left: 275px;
+  background: #7f2f86;
+  color: white;
 }
-.btn{
-    position: absolute;
-    text-align:center;
-    width:60px;
-    height: 60px;
-    padding:10px;
-    border-radius: 50%;
-    margin-top: 470px;
-    margin-left: 200px;
-    background: #7f2f86;
-    color: white;
+.pills-card {
+  margin-top: 150px;
+  padding: 12px;
+  height: 250px;
 }
-.pills-card{
-    margin-top:150px ;
-    padding:12px;
-    height: 250px;
+.content {
+  --background: rgba(14, 108, 148, 0.1);
 }
-.content{
-    --background: rgba(14, 108, 148, 0.1);
+.pillcard {
+  /* position: absolute; */
+  width: 92%;
+  height: 155px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+}
+.pillhours p {
+  position: absolute;
+  /* width: 100px;
+  height: 35px; */
+  left: 16px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 35px;
+
+  color: #000000;
+}
+.pilldate {
+  position: absolute;
+  /* width: 78px; */
+  /* height: 35px; */
+  left: 16px;
+  top: 70px;
+  font-style: normal;
+  font-size: 17px;
+  color: #000000;
+}
+#day {
+  font-weight: 500;
+  margin-top: 20px;
+}
+.pilllist {
+  position: absolute;
+  /* width: 142px;
+  height: 18px; */
+  left: 165px;
+  top: 30px;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 18px;
+  color: red;
+}
+.pilllist span {
+  color: black;
+  font-weight: 550;
+  font-family: 'Times New Roman', Times, serif;
 }

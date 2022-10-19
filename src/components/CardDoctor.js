@@ -8,12 +8,14 @@ import {
     IonIcon,
     IonLabel,
 } from '@ionic/react';
+
 import { calendar, watch } from 'ionicons/icons';
 import './CardDoctor.css';
 const CardDoctor = () => {
+    
     return (
         <div className='carddoctor'>
-            <IonCard >
+            <IonCard href='/appointreminder'>
                 <div>
                     <div>
                         <h2 style={{ paddingLeft: "15px",color:"red" }}>DR DANIEL</h2>
@@ -22,12 +24,12 @@ const CardDoctor = () => {
                         <h5 style={{ paddingLeft: "15px",color:"red" }}>Dermatogist</h5>
                     </div>
                 </div>
-                <div>
+                {/* <div> */}
                     <div className="doctortime">
-                        <IonIcon icon={watch} style={{ margin: "20px" }} />
-                        <IonIcon icon={calendar} style={{ marginLeft: "115px",marginBottom:"20px" }} />
+                        <span > <IonIcon icon={watch} style={{paddingRight:"5px"}}/>12:00</span>
+                        <span style={{ paddingLeft: "160px" }} ><IonIcon icon={calendar} style={{paddingRight:"5px"}} /> 25/102022</span>
                     </div>
-                </div>
+                {/* </div> */}
             </IonCard>
         </div>
     )

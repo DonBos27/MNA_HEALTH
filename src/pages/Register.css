@@ -4,8 +4,8 @@
 .RegFormCont {
   /* margin-bottom: 50px;   */
   border: 1px;
-  border-radius: 150px 50px 0px 0px;
-  height: 420px;
+  border-radius: 180px 50px 0px 0px;
+  height: 390px;
   background-color: white;
   width: 100%;
   margin-top: 0px;
@@ -18,20 +18,22 @@
   border: orangered;
   border-radius: 10px;
   margin-top: 30px;
-  margin-left: 35px;
+  margin-left: 55px;
+  width: 70%;
   height: 35px;
   box-shadow: 5px 5px 5px #222428;
 }
-.loginForm label {
+/* .loginForm label {
   margin-left: 20px;
   color: white;
-}
+} */
 .loginForm button {
   position: absolute;
   left: 16.36%;
-  right: 15.06%;
-  top: 85.31%;
-  bottom: 8.65%;
+  /* right: 15.06%; */
+  top: 85%;
+  width: 65%;
+  /* bottom: 18.65%; */
   height: 40px;
   color: white;
   background: #7f2f86;
@@ -53,12 +55,12 @@
 }
 #logo {
   margin-top: 45px;
-  width: 75px;
-  margin-left: 100px;
+  width: 105px;
+  margin-left: 155px;
   margin-bottom: 40px;
 }
 #fullName {
-  margin-top: 65px;
+  margin-top: 85px;
   padding-left: 10px;
 }
 #email {
@@ -82,14 +84,15 @@
   width: 75px;
   height: 75px;
   background-color: #d9d9d9;
-  margin-left: 105px;
+  margin-left: 175px;
   border-radius: 50%;
-  margin-top: -25px;
+  margin-top: -35px;
   position: absolute;
 }
 .camera .camIcon {
   margin-top: 25px;
   margin-left: 28px;
+  /* width: 15px; */
 }
 .Register{
   margin-bottom: 30px; 
