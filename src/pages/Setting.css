@@ -11,3 +11,12 @@
 h2 {
   color: white;
 }
+.card {
+  top: 0px;
+  width:90%;
+  padding: 10px 20px;
+  background-color: white;
+  opacity: 0.5;
+  border-radius: 20px;
+  height: 90px;
+}

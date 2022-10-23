@@ -37,6 +37,10 @@ import './theme/variables.css';
 import Register from './pages/Register';
 import PillsReminder from './pages/PillsReminder';
 import AppointReminder from './pages/AppointReminder';
+// import Medicalinfo from './pages/MedicalInfo';
+// import SettingCard from './components/MedicalInfo';
+import MedicalInfo from './components/MedicalInfo';
+import Login from './pages/Login';
 
 setupIonicReact();
 
@@ -59,11 +63,17 @@ const App = () => (
         <Route path="/register">
           <Register />
         </Route>
+        <Route path="/login">
+          <Login/>
+        </Route>
         <Route path="/pillsreminder">
           <PillsReminder />
         </Route>
         <Route path="/appointreminder">
           <AppointReminder />
+        </Route>
+        <Route path="/medicalinformation">
+          <MedicalInfo />
         </Route>
         <Route exact path="/">
           {/* <Redirect to="/register" /> */}

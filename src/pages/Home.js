@@ -1,10 +1,6 @@
 import {
     IonPage,
     IonContent,
-    IonIcon,
-    IonTabBar,
-    IonTabButton,
-    IonLabel,
 } from '@ionic/react';
 import TabBar from '../components/TabBar';
 import './Home.css';
@@ -25,6 +21,10 @@ const Home = () => {
         console.log('appoint');
         history.push('/appointreminder', { direction: "forward" });
     }
+    const medinfo = () => {
+        console.log('medical info')
+        history.push('/medicalinformation', { direction: "forward" });
+    }
 
     return (
         <IonPage >
@@ -36,13 +36,13 @@ const Home = () => {
                         <div className="container" >
                             <div className="scrolling-wrapper" scrolly="true" >
                                 <span scrolly='true' >
-                                    <img src={Pills} scrolly='true' style={{ marginRight: "15px",width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px"  }} onClick={pills}/>
+                                    <img src={Pills} scrolly='true' style={{ marginRight: "15px", width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} onClick={pills} />
                                 </span>
                                 <span scrolly='true'>
-                                    <img src={Doctor} scrolly='true' style={{ marginRight: "15px", width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} onClick={appoint}/>
+                                    <img src={Doctor} scrolly='true' style={{ marginRight: "15px", width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} onClick={appoint} />
                                 </span>
                                 <span scrolly='true'>
-                                    <img src={Report} scrolly='true' style={{ marginRight: "30px",width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
+                                    <img src={Report} scrolly='true' style={{ marginRight: "30px", width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} onClick={medinfo}/>
                                 </span>
                             </div>
                         </div>

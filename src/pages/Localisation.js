@@ -12,7 +12,6 @@ import {
 } from '@ionic/react';
 import Header from '../components/Header';
 import TabBar from '../components/TabBar';
-// import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 const Localisation = () => {
 
     const [lat, setLat] = useState();
@@ -21,8 +20,8 @@ const Localisation = () => {
 
     const printCurrentPosition = async () => {
         const coordinates = await Geolocation.getCurrentPosition();
-        // console.log("Current position:", coordinates);
-        // console.log(coordinates.coords.latitude)
+        console.log("Current position:", coordinates);
+        console.log(coordinates.coords.latitude)
         setLat(coordinates.coords.latitude);
         setLong(coordinates.coords.longitude);
         console.log(lat);
@@ -38,7 +37,6 @@ const Localisation = () => {
         fetchNearbyPlaces()
     }, [lat, long]);
     const fetchNearbyPlaces = () => {
-        // var axios = require('axios');
         var config = {
             method: 'get',
             url: `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${long}&radius=5000&type=hospital&key=AIzaSyBkue_ZXAlaDnMZcISiXRkgn0NGDLCSxGY`,
@@ -59,33 +57,6 @@ const Localisation = () => {
             <IonContent className='main'>
                 <Header title='Finds Hospitals' />
                 <div style={{ marginTop: "150px" }}>
-                    {/* <GooglePlacesAutocomplete
-                        selectProps={{
-                            placeholder: 'Search...',
-                            onChange: (val) => {
-                                console.log(val);
-                                fetch(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?place_id=${val.value.place_id}&key=AIzaSyBkue_ZXAlaDnMZcISiXRkgn0NGDLCSxGY`)
-                                    .then((res) => console.log(res.data))
-                                var config = {
-                                    method: 'get',
-                                    url: `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?place_id=${val.value.place_id}&key=AIzaSyBkue_ZXAlaDnMZcISiXRkgn0NGDLCSxGY`,
-                                    headers: {}
-                                };
-
-                                (axios(config)).then(function (response) {
-                                    console.log(response.data.results.geometry.location);
-                                    setPlaces(response.data.results);
-                                    setLat(response.data.results.geometry.location.lat);
-                                    setLong(response.data.results.geometry.location.lng);
-                                    // setLong(coordinates.coords.longitude);
-
-                                }).catch(function (error) {
-                                    console.log(error);
-                                });
-                            }
-                        }}
-                    apiKey="AIzaSyBkue_ZXAlaDnMZcISiXRkgn0NGDLCSxGY"
-                    /> */}
                     {places.length > 0 && places.map((place, index) => (
                         <IonCard key={index} >
                             <IonCardHeader>
@@ -94,11 +65,9 @@ const Localisation = () => {
                                         place.photos &&
                                         `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=${place.photos.map(
                                             (photo) => photo.photo_reference
-                                        )}&key=AIzaSyBkue_ZXAlaDnMZcISiXRkgn0NGDLCSxGY`} alt="No Picture Found" 
-                                    // src={place.icon} alt="No Picture Found"
-                                    />
+                                        )}&key=AIzaSyBkue_ZXAlaDnMZcISiXRkgn0NGDLCSxGY`} alt="No Picture Found"
+                                />
                             </IonCardHeader>
-                            {/* <hr style={{backgroundColor:"black", width:"88%", marginLeft:"15px"}}></hr> */}
                             <IonItemDivider style={{ backgroundColor: "" }}>
                                 <IonCardContent>
                                     <h2 style={{ color: "black", fontWeight: "bold", marginBottom: "10px" }}>{place.name}</h2>

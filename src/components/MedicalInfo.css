@@ -1,0 +1,33 @@
+.info {
+  height: 410px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 25px;
+  border-radius: 50px 50px 0px 0px;
+}
+.info p{
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 25px;
+}
+.emergency {
+  margin-bottom: 30px;
+  height: 160px;
+  border-radius: 50px 0px 50px 50px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.emergency p{
+    text-align: center;
+}
+.medinfo{
+    --background: rgb(14, 108, 148);
+}
+.btnmedinfo{
+  border-radius: 0px 0px 50px 50px;
+  margin-top: 35px;
+  background-color: rgba(255, 255, 255, 0);
+}
