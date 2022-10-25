@@ -41,6 +41,7 @@ import AppointReminder from './pages/AppointReminder';
 // import SettingCard from './components/MedicalInfo';
 import MedicalInfo from './components/MedicalInfo';
 import Login from './pages/Login';
+import AccountInfo from './pages/AccountInfo';
 
 setupIonicReact();
 
@@ -74,6 +75,9 @@ const App = () => (
         </Route>
         <Route path="/medicalinformation">
           <MedicalInfo />
+        </Route>
+        <Route path="/accountinformation">
+          <AccountInfo/>
         </Route>
         <Route exact path="/">
           {/* <Redirect to="/register" /> */}

@@ -43,13 +43,13 @@ const Localisation = () => {
             headers: {}
         };
 
-        (axios(config)).then(function (response) {
-            console.log(response.data.results);
-            setPlaces(response.data.results);
+            (axios(config)).then(function (response) {
+                console.log(response.data.results);
+                setPlaces(response.data.results);
 
-        }).catch(function (error) {
-            console.log(error);
-        });
+            }).catch(function (error) {
+                console.log(error);
+            });
     }
 
     return (
@@ -59,7 +59,7 @@ const Localisation = () => {
                 <div style={{ marginTop: "150px" }}>
                     {places.length > 0 && places.map((place, index) => (
                         <IonCard key={index} >
-                            <IonCardHeader>
+                            <IonCardHeader >
                                 <img style={place.photos && { height: "25vh", width: "100%" }}
                                     src={
                                         place.photos &&

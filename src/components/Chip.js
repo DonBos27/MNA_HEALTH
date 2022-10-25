@@ -3,7 +3,7 @@ import './SettingCard.css';
 function Chip(props) {
   return (
     <>
-      <IonChip className="chip" >
+      <IonChip className="chip" onClick={props.onclick}>
         <IonIcon icon={props.IconLeft} />
         <p>{props.Label}</p>
         <IonIcon icon={props.IconRight}></IonIcon>
