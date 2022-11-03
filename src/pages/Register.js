@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     IonContent,
     IonPage,
@@ -12,8 +12,9 @@ import { camera, warning } from "ionicons/icons";
 import { Camera, CameraResultType, CameraSource, } from '@capacitor/camera';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { useState } from 'react';
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../firebase/configFirebase';
+import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { auth, db, userCollection } from '../firebase/configFirebase';
+import { addDoc, setDoc, doc, collection } from "firebase/firestore";
 import { useHistory } from 'react-router-dom';
 
 
@@ -27,6 +28,13 @@ function Register() {
     const history = useHistory();
     const [present] = useIonToast();
 
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                history.replace('/login');
+            }
+        })
+    }, [])
     const RegisterBtn = (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
@@ -85,6 +93,11 @@ function Register() {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
                     const user = userCredential.user;
+                    setDoc(doc(db, "Users", user.uid), {
+                        fullName: fullName,
+                        email: email,
+                        dateOfBirth: dateOfBirth,
+                    })
                     history.push("/login", { direction: "forward" });
                     setFullName("");
                     setEmail("");
@@ -132,11 +145,11 @@ function Register() {
         <IonPage >
             <IonContent fullscreen className="main">
                 <img src={Logo} alt="logo" id="logo" /> <br />
-                <img className="imgPic" src={photo} alt="Add Profile"></img>
                 <div className="RegFormCont" >
                     <div className="camera" onClick={takePhoto}>
-                        <IonIcon icon={camera} className="camIcon" />
+                        <IonIcon icon={camera} className="camIcon" onClick={takePhoto} />
                     </div>
+                    <img className="imgPic" src={photo} alt="" onClick={takePhoto}></img>
                     <div className="loginForm">
                         <input
                             type="text"
@@ -179,7 +192,7 @@ function Register() {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         ></input>
                         <button type="submit" className="Register" onClick={RegisterBtn}>Register</button>
-                        <p style={{ marginTop: "65px", marginLeft: "120px", fontSize: "12px", color: "white" }}>Already have an account</p>
+                        <p style={{ marginTop: "95px", marginLeft: "120px", fontSize: "12px", color: "white" }}>Already have an account</p>
                         <button type="submit" className="log" onClick={handleLogin}>Login</button>
                     </div>
                 </div>

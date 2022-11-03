@@ -2,18 +2,20 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonItem, IonIcon, IonLabel, IonButton, IonImg, IonList, IonButtons, IonModal, IonAvatar, } from '@ionic/react';
 import {trashBin,createSharp } from 'ionicons/icons';
 import { useRef } from 'react';
-// import { Remind } from './remind'
 import './card.css';
-// import { create } from 'domain';
-
+import { useHistory } from 'react-router';
 const CardPills = () => {
-    const modal = useRef(null);
-    function dismiss() {
-        modal.current?.dismiss();
+    const history = useHistory()
+    // const modal = useRef(null);
+    // function dismiss() {
+    //     modal.current?.dismiss();
+    // }
+    const pills = () =>{
+        history.push('/pillsreminder')
     }
     return (
         <div >
-            <IonCard className='pillscard' href='/pillsreminder'>
+            <IonCard className='pillscard'  onClick={pills}>
                 <div className='pillshours' >
                     <p>08:45</p>
                     <li className='pillslist'>

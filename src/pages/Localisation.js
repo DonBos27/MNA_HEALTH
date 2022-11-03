@@ -12,11 +12,26 @@ import {
 } from '@ionic/react';
 import Header from '../components/Header';
 import TabBar from '../components/TabBar';
-const Localisation = () => {
+import { auth } from '../firebase/configFirebase'
+import { useHistory } from 'react-router-dom'
+import { onAuthStateChanged } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
+const Localisation = () => {
+    const history = useHistory();
     const [lat, setLat] = useState();
     const [long, setLong] = useState();
     const [places, setPlaces] = useState([]);
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                history.replace('/localisation');
+            } else {
+                history.replace('/login');
+            }
+        })
+    }, [])
 
     const printCurrentPosition = async () => {
         const coordinates = await Geolocation.getCurrentPosition();
@@ -42,14 +57,12 @@ const Localisation = () => {
             url: `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat}%2C${long}&radius=5000&type=hospital&key=AIzaSyBkue_ZXAlaDnMZcISiXRkgn0NGDLCSxGY`,
             headers: {}
         };
-
-            (axios(config)).then(function (response) {
-                console.log(response.data.results);
-                setPlaces(response.data.results);
-
-            }).catch(function (error) {
-                console.log(error);
-            });
+        (axios(config)).then(function (response) {
+            console.log(response.data.results);
+            setPlaces(response.data.results);
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 
     return (

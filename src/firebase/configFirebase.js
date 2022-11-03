@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
+import { getFirestore, collection } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,3 +24,19 @@ const app = initializeApp(firebaseConfig);
 
 // Authentication
 export const auth = getAuth();
+
+// connect to database
+
+export const db = getFirestore();
+
+// Connect to UserCollection
+
+export const userCollection = collection(db,"Users");
+
+// connect to medicalCollection
+
+export const medicalCollection = collection(db,"medical");
+
+// connect to realtime data
+
+export const database = getDatabase(app);

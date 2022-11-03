@@ -1,5 +1,5 @@
 import { IonTabBar, IonTabButton, IonIcon, IonLabel, IonPage, IonContent } from "@ionic/react"
-import { cog, home, map } from 'ionicons/icons';
+import { businessOutline, cog, home } from 'ionicons/icons';
 import { useState } from "react";
 const TabBar = () => {
     return (
@@ -9,8 +9,8 @@ const TabBar = () => {
                 <IonLabel>Home</IonLabel>
             </IonTabButton>
             <IonTabButton tab="localisation" href="/localisation" >
-                <IonIcon icon={map} />
-                <IonLabel>Map</IonLabel>
+                <IonIcon icon={businessOutline} />
+                <IonLabel>Hospital</IonLabel>
             </IonTabButton>
             <IonTabButton tab="setting" href="/setting" >
                 <IonIcon icon={cog} />

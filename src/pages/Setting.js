@@ -4,16 +4,30 @@ import {
     IonCard,
 } from '@ionic/react';
 import Header from '../components/Header';
-import { person, chevronForward, notifications, lockClosed, globeSharp, callOutline } from "ionicons/icons";
+import { person, chevronForward, notifications, lockClosed, globeSharp, callOutline, informationCircle } from "ionicons/icons";
 import "./Setting.css";
 import TabBar from '../components/TabBar';
 import Chip from '../components/Chip';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useHistory } from 'react-router';
-
-const Setting = (props) => {
-    const [accountInfo, setAccountInfo] = useState("");
+// import {auth} from '../firebase/configFirebase'
+// import { onAuthStateChanged } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
+const Setting = () => {
+    // const [accountInfo, setAccountInfo] = useState("");
     const history = useHistory();
+
+    // verified if user exist
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    if (user) {
+        history.push("/setting")
+    } else {
+        history.push("/login")
+    }
+
+    //
     const AccInfo = () => {
         console.log("Account Info");
         history.push('/accountinformation', { direction: "forward" });
@@ -41,7 +55,7 @@ const Setting = (props) => {
                     <h2 className='settingTitle' style={{ paddingTop: "120px" }}>Profile</h2>
                     <IonCard className="card">
                         <Chip
-                            props={props}
+                            // props={props}
                             Label="Account Information"
                             IconLeft={person}
                             IconRight={chevronForward}
@@ -57,16 +71,16 @@ const Setting = (props) => {
                     <h2>Features</h2>
                     <IonCard className="links-card">
                         <Chip
-                            props={props}
+                            // props={props}
                             Label="Community Forum"
                             IconLeft={globeSharp}
                             IconRight={chevronForward}
                             onclick={Forum}
                         />
                         <Chip
-                            props={props}
-                            Label="Contact Us"
-                            IconLeft={callOutline}
+                            // props={props}
+                            Label="About Us"
+                            IconLeft={informationCircle}
                             IconRight={chevronForward}
                             onclick={Contact}
                         />
@@ -74,7 +88,7 @@ const Setting = (props) => {
                     <h2>Privacy and Notification</h2>
                     <IonCard className="links-card">
                         <Chip
-                            props={props}
+                            // props={props}
                             Label="Privacy & Security"
                             IconLeft={lockClosed}
                             IconRight={chevronForward}
@@ -82,7 +96,7 @@ const Setting = (props) => {
                         />
                         {/* <div className="line"></div> */}
                         <Chip
-                            props={props}
+                            // props={props}
                             Label="Notification"
                             IconLeft={notifications}
                             IconRight={chevronForward}

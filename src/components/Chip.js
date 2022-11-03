@@ -1,6 +1,6 @@
 import { IonChip, IonIcon, IonLabel } from "@ionic/react";
 import './SettingCard.css';
-function Chip(props) {
+const Chip = (props) => {
   return (
     <>
       <IonChip className="chip" onClick={props.onclick}>

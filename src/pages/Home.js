@@ -11,8 +11,22 @@ import Report from '../pictures/medicalReport.gif';
 import CardPills from '../components/card';
 import CardDoctor from '../components/CardDoctor';
 import { useHistory } from 'react-router';
+import {auth} from '../firebase/configFirebase'
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect } from 'react';
+import { getAuth } from 'firebase/auth';
+
 const Home = () => {
     const history = useHistory();
+    useEffect(()=>{
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                history.replace('/home');
+            } else {
+                history.replace('/login');
+            }
+        })
+    },[])
     const pills = () => {
         console.log('pills');
         history.push('/pillsreminder', { direction: "forward" });

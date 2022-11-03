@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { IonPage, IonContent, IonNavLink, IonIcon, useIonToast, } from '@ionic/react'
 import Logo from "../pictures/logo.svg";
 import './Login.css';
@@ -8,9 +8,10 @@ import loginPic from '../pictures/login.gif';
 import login1 from '../pictures/login1.gif';
 import login2 from '../pictures/login2.gif';
 import { logoGoogle, logoFacebook, warning } from 'ionicons/icons';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
 import { auth } from '../firebase/configFirebase';
 import { useHistory } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 
 
 const Login = () => {
@@ -18,6 +19,45 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const history = useHistory();
     const [present] = useIonToast();
+    const provider = new GoogleAuthProvider();
+    const provider2 = new FacebookAuthProvider();
+    const auth = getAuth();
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                history.replace('/home');
+            }
+        })
+    }, [])
+    const google = () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                history.replace('/home');
+            }).catch((error) => {
+                console.log(error);
+            });
+    }
+    const facebook = () => {
+        signInWithPopup(auth, provider2)
+            .then((result) => {
+                const credential = FacebookAuthProvider.credentialFromResult(result);
+                const accessToken = credential.accessToken;
+                const user = result.user;
+                history.replace('/home');
+                console.log(user)
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.customData.email;
+                const credential = FacebookAuthProvider.credentialFromError(error);
+                console.log(error)
+            });
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -78,8 +118,8 @@ const Login = () => {
                     <img src={login1} style={{ width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
                     <img src={login2} style={{ width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
                     <div>
-                        <IonIcon icon={logoGoogle} size="large" style={{ marginTop: "35px", marginLeft: "130px" }} />
-                        <IonIcon icon={logoFacebook} size="large" style={{ marginTop: "35px", marginLeft: "25px" }} />
+                        <IonIcon icon={logoGoogle} size="large" style={{ marginTop: "35px", marginLeft: "130px" }} onClick={google} />
+                        <IonIcon icon={logoFacebook} size="large" style={{ marginTop: "35px", marginLeft: "25px" }} onClick={facebook}/>
                     </div>
                     <input
                         type="email"
