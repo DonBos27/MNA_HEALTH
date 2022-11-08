@@ -11,6 +11,9 @@
   background: #7f2f86;
   color: white;
 }
+.bg{
+  --background: #0e6c9498;
+}
 .pills-card {
   margin-top: 150px;
   padding: 12px;

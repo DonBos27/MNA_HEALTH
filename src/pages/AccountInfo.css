@@ -9,11 +9,12 @@
 }
 .top img{
     position: absolute;
-    background-color: #d9d9d9;
+    /* background-color: #d9d9d9; */
+    opacity: 0.8;
     width: 85px;
     height: 85px;
     left: 130px;
-    top: 50px;
+    top: 20px;
     border-radius: 50%;
     border: 1px solid rgb(0, 0, 0);
 }
@@ -22,7 +23,7 @@
     width: 100%;
     height: 124px;
     left: 0px;
-    top: 40px;
+    top: 60px;
     font-style: normal;
     font-weight: 700;
     font-size: 28px;
@@ -42,7 +43,7 @@
 .accountinfo{
     position: absolute;
     width: 95%;
-    height: 50%;
+    height: 40%;
     left: 0px;
     top: 200px;
     background: #ffffff96;

@@ -8,14 +8,16 @@ import loginPic from '../pictures/login.gif';
 import login1 from '../pictures/login1.gif';
 import login2 from '../pictures/login2.gif';
 import { logoGoogle, logoFacebook, warning } from 'ionicons/icons';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
-import { auth } from '../firebase/configFirebase';
+import { setDoc,doc } from 'firebase/firestore';
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider,signInWithRedirect } from "firebase/auth";
+import { auth,db } from '../firebase/configFirebase';
 import { useHistory } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 
 
 const Login = () => {
     const [email, setEmail] = useState("");
+    const [affiche, setFullName]= useState([])
     const [password, setPassword] = useState("");
     const history = useHistory();
     const [present] = useIonToast();
@@ -36,7 +38,15 @@ const Login = () => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const user = result.user;
+                setFullName(user)
+                setDoc(doc(db, "Users", user.uid), {
+                    fullName: user.displayName,
+                    email: user.email,
+                    dateOfBirth: user.metadata.creationTime,
+                    photo: user.photoURL,
+                })
                 history.replace('/home');
+                console.log(user)
             }).catch((error) => {
                 console.log(error);
             });
@@ -47,6 +57,13 @@ const Login = () => {
                 const credential = FacebookAuthProvider.credentialFromResult(result);
                 const accessToken = credential.accessToken;
                 const user = result.user;
+                setFullName(user)
+                setDoc(doc(db, "Users", user.uid), {
+                    fullName: user.displayName,
+                    email: user.email,
+                    dateOfBirth: user.metadata.creationTime,
+                    photo: user.photoURL,
+                })
                 history.replace('/home');
                 console.log(user)
             })

@@ -5,7 +5,7 @@
   position: absolute;
   width: 277px;
   height: 41px;
-  left: 40px;
+  left: 43px;
   top: 75px;
   font-family: "Sen";
   font-style: normal;
@@ -19,7 +19,7 @@
   position: absolute;
   width: 165px;
   height: 39px;
-  left: 100px;
+  left: 103px;
   top: 110px;
   font-family: 'Sen';
   font-style: normal;
@@ -36,7 +36,8 @@
   left: 45px;
   top: 520px;
   font-style: normal;
-  font-size: 12px;
+  font-size: 15px;
+  font-weight: 400;
   line-height: 14px;
   color: #FFFFFF;
 }

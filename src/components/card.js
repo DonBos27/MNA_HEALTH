@@ -11,7 +11,7 @@ const CardPills = () => {
     //     modal.current?.dismiss();
     // }
     const pills = () =>{
-        history.push('/pillsreminder')
+        history.push('/pills')
     }
     return (
         <div >

@@ -29,7 +29,7 @@ const Home = () => {
     },[])
     const pills = () => {
         console.log('pills');
-        history.push('/pillsreminder', { direction: "forward" });
+        history.push('/pills', { direction: "forward" });
     }
     const appoint = () => {
         console.log('appoint');

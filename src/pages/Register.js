@@ -20,7 +20,7 @@ import { useHistory } from 'react-router-dom';
 
 function Register() {
     const [photo, setPhoto] = useState();
-    const [fullName, setFullName] = useState('');
+    const [displayName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -55,7 +55,7 @@ function Register() {
             setPassword("");
             setConfirmPassword("");
         }
-        else if (fullName === '' || email === '' || password === '' || confirmPassword === '' || dateOfBirth === '') {
+        else if (displayName === '' || email === '' || password === '' || confirmPassword === '' || dateOfBirth === '') {
             present({
                 message: 'Please fill in all the fields!',
                 duration: 3000,
@@ -94,7 +94,7 @@ function Register() {
                 .then((userCredential) => {
                     const user = userCredential.user;
                     setDoc(doc(db, "Users", user.uid), {
-                        fullName: fullName,
+                        fullName: displayName,
                         email: email,
                         dateOfBirth: dateOfBirth,
                     })
@@ -156,7 +156,7 @@ function Register() {
                             placeholder="Full Name"
                             className="input"
                             id="fullName"
-                            value={fullName}
+                            value={displayName}
                             onChange={(e) => setFullName(e.target.value)}
                         ></input>{" "}
                         <input

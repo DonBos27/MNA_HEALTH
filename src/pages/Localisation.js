@@ -10,6 +10,7 @@ import {
     IonItemDivider,
 
 } from '@ionic/react';
+import './Localisation.css'
 import Header from '../components/Header';
 import TabBar from '../components/TabBar';
 import { auth } from '../firebase/configFirebase'
@@ -67,9 +68,10 @@ const Localisation = () => {
 
     return (
         <IonPage >
-            <IonContent className='main'>
+            <IonContent className='localisation'>
                 <Header title='Finds Hospitals' />
                 <div style={{ marginTop: "150px" }}>
+                    {/* <h1 >Hello world</h1> */}
                     {places.length > 0 && places.map((place, index) => (
                         <IonCard key={index} >
                             <IonCardHeader >
@@ -89,7 +91,7 @@ const Localisation = () => {
                                     </h4>
                                     <hr style={{ backgroundColor: "black", width: "100%" }}></hr>
                                     <div>
-                                        {place.opening_hours && place.opening_hours.open_now === true ? <h2 style={{ color: "green" }}>Open</h2> : <h2 style={{ color: "red" }}>Closed</h2>}
+                                        {place.opening_hours && place.opening_hours.open_now === true ? <h2 style={{ color: "blue" }}>Open</h2> : <h2 style={{ color: "red" }}>Closed</h2>}
                                     </div>
                                 </IonCardContent>
                             </IonItemDivider>

@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Remind from "../components/remind";
 import './PillsReminder.css';
 import TabBar from "../components/TabBar";
-import {auth} from '../firebase/configFirebase'
+import { auth } from '../firebase/configFirebase'
 import { onAuthStateChanged } from 'firebase/auth';
 import { useHistory } from "react-router";
 const PillsReminder = () => {
@@ -13,7 +13,7 @@ const PillsReminder = () => {
     const [error, setError] = useState(null);
     const history = useHistory()
 
-    useEffect(()=>{
+    useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 history.push('/pillsreminder');
@@ -21,15 +21,16 @@ const PillsReminder = () => {
                 history.push('/login');
             }
         })
-    },[])
+    }, [])
 
     return (
         <IonPage>
             <IonContent className="main">
-                <Header title="Pills Reminder"/>
-                <Remind/>
+                <Header title="Pills Reminder" />
+                <h1>Hello world</h1>
+                <Remind />
             </IonContent>
-            <TabBar/>
+            <TabBar />
         </IonPage>
 
     );

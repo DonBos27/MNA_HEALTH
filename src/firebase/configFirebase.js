@@ -31,11 +31,15 @@ export const db = getFirestore();
 
 // Connect to UserCollection
 
-export const userCollection = collection(db,"Users");
+export const userCollection = collection(db, "Users");
 
 // connect to medicalCollection
 
-export const medicalCollection = collection(db,"medical");
+export const medicalCollection = collection(db, "medical");
+
+// connect to appointmentCollection
+
+export const appointmentCollection = collection(db, "appointment");
 
 // connect to realtime data
 

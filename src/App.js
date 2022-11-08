@@ -12,6 +12,7 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Slide from './pages/Slide';
+import Slides from './pages/slides';
 import Home from './pages/Home';
 import Localisation from './pages/Localisation';
 import Setting from './pages/Setting';
@@ -35,7 +36,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Register from './pages/Register';
-import PillsReminder from './pages/PillsReminder';
+import PillsReminder from './pages/pills';
 import AppointReminder from './pages/AppointReminder';
 // import Medicalinfo from './pages/MedicalInfo';
 // import SettingCard from './components/MedicalInfo';
@@ -49,8 +50,8 @@ const App = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/slide">
-          <Slide />
+        <Route exact path="/slides">
+          <Slides />
         </Route>
         <Route exact path="/home">
           <Home />
@@ -58,7 +59,7 @@ const App = () => (
         <Route exact path="/localisation">
           <Localisation />
         </Route>
-        <Route path="/setting">
+        <Route exact path="/setting">
           <Setting />
         </Route>
         <Route path="/register">
@@ -67,7 +68,7 @@ const App = () => (
         <Route path="/login">
           <Login/>
         </Route>
-        <Route path="/pillsreminder">
+        <Route path="/pills">
           <PillsReminder />
         </Route>
         <Route path="/appointreminder">
@@ -81,7 +82,7 @@ const App = () => (
         </Route>
         <Route exact path="/">
           {/* <Redirect to="/register" /> */}
-          <IonNav root={() => <Slide />}></IonNav>;
+          <IonNav root={() => <Slides />}></IonNav>;
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
