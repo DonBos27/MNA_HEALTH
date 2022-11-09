@@ -41,8 +41,7 @@ import './theme/variables.css';
 import Register from './pages/Register';
 import PillsReminder from './pages/pills';
 import AppointReminder from './pages/AppointReminder';
-// import Medicalinfo from './pages/MedicalInfo';
-// import SettingCard from './components/MedicalInfo';
+import Privacy from './pages/privacy';
 import MedicalInfo from './components/MedicalInfo';
 import Login from './pages/Login';
 import AccountInfo from './pages/AccountInfo';
@@ -88,6 +87,9 @@ const App = () => (
         </Route>
         <Route path="/accountinformation">
           <AccountInfo/>
+        </Route>
+        <Route path="/privacy">
+          <Privacy/>
         </Route>
         <Route exact path="/">
           {/* <Redirect to="/register" /> */}

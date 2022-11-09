@@ -10,11 +10,8 @@ import TabBar from '../components/TabBar';
 import Chip from '../components/Chip';
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
-// import {auth} from '../firebase/configFirebase'
-// import { onAuthStateChanged } from 'firebase/auth';
 import { getAuth } from 'firebase/auth';
 const Setting = () => {
-    // const [accountInfo, setAccountInfo] = useState("");
     const history = useHistory();
 
     // verified if user exist
@@ -27,7 +24,6 @@ const Setting = () => {
         history.push("/login")
     }
 
-    //
     const AccInfo = () => {
         console.log("Account Info");
         history.push('/accountinformation', { direction: "forward" });
@@ -36,10 +32,8 @@ const Setting = () => {
         console.log("forum");
         history.push('/chatforum', { direction: "forward" });
     }
-    const Notification = () => {
-        console.log("Notification");
-    }
     const Security = () => {
+        history.push('/privacy', { direction: "forward" });
         console.log("Security");
     }
     const Contact = () => {
