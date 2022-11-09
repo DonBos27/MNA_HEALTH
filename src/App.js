@@ -16,6 +16,9 @@ import Slides from './pages/slides';
 import Home from './pages/Home';
 import Localisation from './pages/Localisation';
 import Setting from './pages/Setting';
+import Forum from './pages/Forum';
+import Chat from './pages/chat'
+import About from './pages/about'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -61,6 +64,12 @@ const App = () => (
         </Route>
         <Route exact path="/setting">
           <Setting />
+        </Route>
+        <Route exact path="/chatforum">
+          <Forum />
+        </Route>
+        <Route exact path="/about">
+          <About />
         </Route>
         <Route path="/register">
           <Register />

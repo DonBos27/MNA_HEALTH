@@ -7,29 +7,28 @@ import {
     IonCardTitle,
     IonIcon,
     IonLabel,
+    IonCardSubtitle,
 } from '@ionic/react';
-
+import { useHistory } from 'react-router';
 import { calendar, watch } from 'ionicons/icons';
 import './CardDoctor.css';
 const CardDoctor = () => {
-    
+    const history = useHistory()
+    const appoint = () =>{
+        history.push('/appointreminder')
+    }
     return (
         <div className='carddoctor'>
-            <IonCard href='/appointreminder'>
-                <div>
-                    <div>
-                        <h2 style={{ paddingLeft: "15px",color:"red" }}>DR DANIEL</h2>
-                    </div>
-                    <div>
-                        <h5 style={{ paddingLeft: "15px",color:"red" }}>Dermatogist</h5>
-                    </div>
+            <IonCard onClick={appoint}>
+                <IonCardHeader>
+                    <IonCardTitle>Appointment</IonCardTitle>
+                    <IonCardSubtitle>
+                        <IonIcon icon={calendar} color="danger" style={{paddingRight:"10px"}} /> Enter your appointment with your doctor
+                    </IonCardSubtitle>
+                </IonCardHeader>
+                <div className="doctortime">
+                    <IonCardContent>Set a time and a day with his name and his speciality</IonCardContent>
                 </div>
-                {/* <div> */}
-                    <div className="doctortime">
-                        <span > <IonIcon icon={watch} style={{paddingRight:"5px"}}/>12:00</span>
-                        <span style={{ paddingLeft: "160px" }} ><IonIcon icon={calendar} style={{paddingRight:"5px"}} /> 25/102022</span>
-                    </div>
-                {/* </div> */}
             </IonCard>
         </div>
     )

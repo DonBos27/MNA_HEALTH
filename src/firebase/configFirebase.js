@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore, collection } from "firebase/firestore";
 import { getDatabase } from "firebase/database";
@@ -12,15 +12,17 @@ import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyA-NSj1Xz9l212zI68M_knd_Vbn8UhIRNs",
   authDomain: "mnahealth-a7a69.firebaseapp.com",
+  databaseURL: "https://mnahealth-a7a69-default-rtdb.firebaseio.com",
   projectId: "mnahealth-a7a69",
   storageBucket: "mnahealth-a7a69.appspot.com",
   messagingSenderId: "362906286893",
-  appId: "1:362906286893:web:2036d7d86c3512ecf8b1a4",
-  measurementId: "G-K9ML1JVJ7H"
+  appId: "1:362906286893:web:6d3d48231e85ed35f8b1a4",
+  measurementId: "G-LLFVKG9CB8"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
 // Authentication
 export const auth = getAuth();
@@ -40,7 +42,3 @@ export const medicalCollection = collection(db, "medical");
 // connect to appointmentCollection
 
 export const appointmentCollection = collection(db, "appointment");
-
-// connect to realtime data
-
-export const database = getDatabase(app);

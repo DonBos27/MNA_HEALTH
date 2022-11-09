@@ -33,7 +33,7 @@ const Login = () => {
         })
     }, [])
     const google = () => {
-        signInWithPopup(auth, provider)
+        signInWithRedirect(auth, provider)
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
@@ -45,14 +45,14 @@ const Login = () => {
                     dateOfBirth: user.metadata.creationTime,
                     photo: user.photoURL,
                 })
-                history.replace('/home');
+                // history.replace('/home');
                 console.log(user)
             }).catch((error) => {
                 console.log(error);
             });
     }
     const facebook = () => {
-        signInWithPopup(auth, provider2)
+        signInWithRedirect(auth, provider2)
             .then((result) => {
                 const credential = FacebookAuthProvider.credentialFromResult(result);
                 const accessToken = credential.accessToken;
@@ -64,7 +64,7 @@ const Login = () => {
                     dateOfBirth: user.metadata.creationTime,
                     photo: user.photoURL,
                 })
-                history.replace('/home');
+                // history.replace('/home');
                 console.log(user)
             })
             .catch((error) => {

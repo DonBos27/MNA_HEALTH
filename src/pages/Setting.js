@@ -8,7 +8,7 @@ import { person, chevronForward, notifications, lockClosed, globeSharp, callOutl
 import "./Setting.css";
 import TabBar from '../components/TabBar';
 import Chip from '../components/Chip';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 // import {auth} from '../firebase/configFirebase'
 // import { onAuthStateChanged } from 'firebase/auth';
@@ -32,8 +32,9 @@ const Setting = () => {
         console.log("Account Info");
         history.push('/accountinformation', { direction: "forward" });
     }
-    const Forum = () => {
-        console.log("Forum");
+    const forum = () => {
+        console.log("forum");
+        history.push('/chatforum', { direction: "forward" });
     }
     const Notification = () => {
         console.log("Notification");
@@ -42,7 +43,8 @@ const Setting = () => {
         console.log("Security");
     }
     const Contact = () => {
-        console.log("Contact");
+        history.push('about')
+        console.log("about");
     }
     return (
         <IonPage >
@@ -55,53 +57,41 @@ const Setting = () => {
                     <h2 className='settingTitle' style={{ paddingTop: "120px" }}>Profile</h2>
                     <IonCard className="card">
                         <Chip
-                            // props={props}
                             Label="Account Information"
                             IconLeft={person}
                             IconRight={chevronForward}
                             onclick={AccInfo}
                         />
-                        {/* <Chip
-                            props={props}
-                            Label="Change your password"
-                            IconLeft={key}
-                            IconRight={chevronForward}
-                        /> */}
                     </IonCard>
                     <h2>Features</h2>
-                    <IonCard className="links-card">
+                    <IonCard className="link-card">
                         <Chip
-                            // props={props}
                             Label="Community Forum"
                             IconLeft={globeSharp}
                             IconRight={chevronForward}
-                            onclick={Forum}
+                            onclick={forum}
                         />
+                    </IonCard>
+                    <h2>Privacy and Contact</h2>
+                    <IonCard className="links-card">
                         <Chip
-                            // props={props}
                             Label="About Us"
                             IconLeft={informationCircle}
                             IconRight={chevronForward}
                             onclick={Contact}
                         />
-                    </IonCard>
-                    <h2>Privacy and Notification</h2>
-                    <IonCard className="links-card">
                         <Chip
-                            // props={props}
                             Label="Privacy & Security"
                             IconLeft={lockClosed}
                             IconRight={chevronForward}
                             onclick={Security}
                         />
-                        {/* <div className="line"></div> */}
-                        <Chip
-                            // props={props}
+                        {/* <Chip
                             Label="Notification"
                             IconLeft={notifications}
                             IconRight={chevronForward}
                             onclick={Notification}
-                        />
+                        /> */}
                     </IonCard>
                 </div>
             </IonContent>

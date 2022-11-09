@@ -141,6 +141,7 @@ function Register() {
         });
         setPhoto(photo.webPath)
     };
+    // storage(`profilesPictures/${user.uid}/`)
     return (
         <IonPage >
             <IonContent fullscreen className="main">

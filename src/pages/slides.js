@@ -14,9 +14,9 @@ import { auth } from '../firebase/configFirebase';
 const slideOpts = {
     initialSlide: 0,
     speed: 400,
-    // autoplay: {
-    //   delay: 3000
-    // }
+    autoplay: {
+        delay: 3000
+    }
 };
 const Slides = () => {
     const history = useHistory();

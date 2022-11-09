@@ -9,8 +9,6 @@ import TabBar from '../components/TabBar';
 import { auth, medicalCollection, database, db } from '../firebase/configFirebase'
 import { addDoc, onAuthStateChanged, setDoc, doc, deleteDoc, getDoc, getDocs, updateDoc, arrayUnion, arrayRemove, onSnapshot } from 'firebase/firestore'
 import { getAuth } from "firebase/auth";
-import { uid } from 'uid'
-import { ref, set, onValue, remove } from "firebase/database";
 
 function Remind() {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,12 +17,10 @@ function Remind() {
     const [pills, setPills] = useState("");
     const [time, setTime] = useState("");
     const [date, setDate] = useState("");
-    // const [id, setId] = useState("");
-    // const [tempUidd, setTempUidd] = useState("");
+    const [selectedPills, setSelectedPills] = useState();
     const history = useHistory();
     const [postData, setPostData] = useState([])
-    // const datas = [{ pills, time, date }]
-    // const [pillsArray, setPillsArray] = useState(datas)
+
     // Verified if user exist
     const auth = getAuth();
     const user = auth.currentUser;
@@ -33,51 +29,21 @@ function Remind() {
         if (user) {
             onSnapshot(doc(db, "medical", user.uid), (doc) => {
                 if (doc.exists()) {
+                    // let items = [];
                     const newData = doc.data();
-                    setPostData(newData.Pills);
-                    console.log(newData);
+                    const pills = newData.Pills;
+                    console.log(pills)
+                    setPostData(pills);
                     console.log(postData)
                     console.log(user.uid)
                 }
                 console.log("Current data: ", doc.data());
-                // if (docSnap.exists()) {
-                //     const newData = docSnap.data();
-                //     setPostData(newData.Pills);
-                //     console.log(newData);
-                //     console.log(postData)
-                //     console.log(user.uid)
-                // }
             })
-            // onValue(ref(database, `/${auth.currentUser.uid}`), (snapshot) => {
-            //     setData([]);
-            //     const dn = snapshot.val();
-            //     if (dn !== null) {
-            //         Object.values(dn).map((data) => {
-            //             setData((oldArray) => [...oldArray, data]);
-            //         });
-            //     }
-            //     history.push("/pillsreminder")
-            // });
         } else {
             history.push("/login")
         }
     }, [])
     function AddPills() {
-        // getDoc(doc(medicalCollection, user.uid)).then(docSnap => {
-        //     if (docSnap.exists()) {
-        //         const data = { pills, time, date }
-        //         const newData = docSnap.data();
-        //         console.log(newData)
-        //         updateDoc(doc(medicalCollection, user.uid), {
-        //             Pills: arrayUnion(data)
-        //         })
-        //         setTime("")
-        //         setPills("")
-        //         setDate("")
-        //         // setIsEdit(false);
-        //         // history.push("/pills", { direction: "forward" });
-        //     }
-        // })
         getDoc(doc(db, "medical", user.uid)).then(docSnap => {
             if (docSnap.exists()) {
                 const data = { pills, time, date }
@@ -101,149 +67,63 @@ function Remind() {
             }
         })
     }
-
-
-    //     const uidd = uid();
-    //     set(ref(database, `/${auth.currentUser.uid}/${uidd}`), {
-    //         time: time,
-    //         pills: pills,
-    //         date: date,
-    //         uidd: uidd
-    //     });
-    //     setData([{ time, pills, date }, ...data]);
-    //     setTime('')
-    //     setPills('')
-    //     setDate('')
-    //     history.push("/pillsreminder", { direction: "forward" });
-    // }
     const del = (index) => {
-        // remove(ref(database, `/${auth.currentUser.uid}/${uid}`));
-        // setData(data.filter((item) => item.uidd !== uid));
-        // const uidd = uid()
-        // const data = [{ id, pills, time, date }]
-        // await deleteDoc(doc(db, "medical", data));
-        // setPillsArray((data) => data.filter((_, i) => data.id !== i));
-
-
-        // setNewData((data) => data.filter((_, i) => data.id !== i))
+        console.log(index)
         getDoc(doc(medicalCollection, user.uid)).then(docSnap => {
             if (docSnap.exists()) {
                 const newData = docSnap.data();
                 console.log(newData)
                 const goals = newData.Pills
                 console.log(goals)
-                const don = goals.filter(goal => goal.id !== index)
-                // goals.splice(index, 1)
+                const don = goals.filter(goal => goal.pills !== index)
+                console.log("Hi", don)
                 console.log(goals)
-                // console.log(don)
-                // updateDoc(doc(medicalCollection, user.uid), {
-                //     Pills: goals
-                // })
-                // const data = { pills, time, date }
-                // updateDoc(doc(medicalCollection, user.uid), {
-                //     Pills: arrayRemove({ pills, time, date })
-                // })
-                setTime("")
-                setPills("")
-                setDate("")
-                // setIsEdit(false);
-                // history.push("/pills", { direction: "forward" });
+                const data = { pills, time, date }
+                updateDoc(doc(medicalCollection, user.uid), {
+                    Pills: don
+                })
             }
         })
-
-
-
-        // if (data) {
-        // setPostData((data) => data.filter((_, i) => data.id !== i));
-        // updateDoc(doc(medicalCollection, user.uid), {
-        //     Pills: arrayRemove({
-        //         pills: data.pills,
-        //         time: data.time,
-        //         date: data.date
-        //     })
-        // })
         console.log("Delete")
-        // }
-        // else {
-        //     console.log("No data")
-        // }
-
-        // const documentRef = doc(db, 'medical', user.uid)
-        // updateDoc(documentRef, {
-        //     Pills: arrayRemove(data)
-        //     // Pills: { pills: pills, time: time, date: date }
-        // });
-        // console.log('deleted')
-
-
     }
-    const update = () => {
-        // const data = { pills, time, date }
-        // updateDoc(doc(db, 'medical', user.uid), {
-        //     pills : pills,
-        //     time : time,
-        //     date : date
-        // })
+    const update = (object) => {
+        console.log(object)
+        getDoc(doc(medicalCollection, user.uid)).then(docSnap => {
+            if (docSnap.exists()) {
+                const newData = docSnap.data();
+                const goals = newData.Pills
+                console.log(goals)
 
-
-        // const documentRef = doc(db, 'medical', user.uid)
-        // updateDoc(documentRef, {
-        //     Pills: arrayUnion({ pills: pills, time: time, date: date })
-        // });
-
-        // const uidd =  uid();
-        // remove(ref(database, `/${auth.currentUser.uid}/${userid}`)).then(docSnap => {
-        //     const uidd = uid();
-        //     set(ref(database, `/${auth.currentUser.uid}/${uidd}`), {
-        //         time: time,
-        //         pills: pills,
-        //         date: date,
-        //         uidd: uidd
-        //     })
-        // });
-        // setData([{ time, pills, date }]);
+                goals.map((goal) => {
+                    if (goal.pills === selectedPills.pills) {
+                        goal.pills = pills
+                        goal.time = time
+                        goal.date = date
+                    }
+                })
+                console.log(goals)
+                updateDoc(doc(medicalCollection, user.uid), {
+                    Pills: goals
+                })
+            }
+        })
         setTime("")
         setPills("")
         setDate("")
-        // setIsEdit(false);
         history.push("/pills", { direction: "forward" });
-
-
-        // database()
-        //     .ref(`/${auth.currentUser.uid}/${uid}`)
-        //     .set({
-        //         time: time,
-        //         pills: pills,
-        //         date: date,
-        //     })
-        //     .then(() => console.log('Data updated.'));
-        // const uidd = uid();
-        // update(ref(database, `/${auth.currentUser.uid}/${tempUidd}`), {
-        //     time: time,
-        //     pills: pills,
-        //     date: date,
-        //     tempUidd: tempUidd
-        // });
-
-
-        // const data = { pills, time, date }
-        // updateDoc(doc(db, 'medical', user.uid), {
-        //     Pills: don
-        // })
-        // console.log()
-
-
-        // setData([{ time, pills, date }]);
-        // setData("");
-        // setIsEdit(false);
         console.log("update")
+    }
+    const openModal = (object) => {
+        setIsEdit(true);
+        console.log(object)
+        setSelectedPills(object)
     }
 
     return (
         <IonPage >
             <IonContent className='bg'>
                 <Header title="Pills Reminder" />
-                <button className='btn' expand="block" onClick={() => setIsOpen(true)} slot='fixed'>
+                <button onClick={() => setIsOpen(true)} slot='fixed' style={{ borderRadius: "50px", height: "60px", width: "60px", marginTop: "600px", marginLeft: "275px", backgroundColor: "#7f2f86", color: "white" }}>
                     <IonIcon icon={add} />
                 </button>
                 <IonModal isOpen={isOpen} className="content" style={{}}>
@@ -275,25 +155,25 @@ function Remind() {
                                     </li>
                                 </div>
                                 <span className='iconDel'>
-                                    <IonIcon icon={trashBin} size="large" className="del" style={{ marginLeft: "200px", marginTop: "90px" }} color="danger" onClick={del} />
+                                    <IonIcon icon={trashBin} size="large" className="del" style={{ marginLeft: "200px", marginTop: "90px" }} color="danger" onClick={() => del(item.pills)} />
                                 </span>
                                 <span>
-                                    <IonIcon icon={createSharp} size="large" style={{ marginLeft: "20px", marginTop: "90px" }} color="warning" onClick={() => setIsEdit(true)} />
+                                    <IonIcon icon={createSharp} size="large" style={{ marginLeft: "20px", marginTop: "90px" }} color="warning" onClick={() => openModal(item)} />
                                 </span>
                                 <IonModal isOpen={isEdit} className="content" style={{}}>
                                     <Header title="Fills The Form" />
                                     <IonCard className='pills-card'>
                                         <IonItemDivider>
-                                            <IonInput type='time' value={time} onIonChange={(e) => setTime(e.target.value)} />
+                                            <IonInput type='time' onIonChange={(e) => setTime(e.target.value)} />
                                         </IonItemDivider>
                                         <IonItemDivider>
-                                            <IonInput type='text' placeholder='Pills' value={pills} onIonChange={(e) => setPills(e.target.value)} />
+                                            <IonInput type='text' placeholder='Pills' onIonChange={(e) => setPills(e.target.value)} />
                                         </IonItemDivider>
                                         <IonItemDivider style={{ marginBottom: "20px" }}>
-                                            <IonInput type='date' value={date} onIonChange={(e) => setDate(e.target.value)} />
+                                            <IonInput type='date' onIonChange={(e) => setDate(e.target.value)} />
                                         </IonItemDivider>
                                         <IonItemDivider className='btnModal' style={{ paddingBottom: "10px" }}>
-                                            <button style={{ height: "50px", width: "60px", marginRight: "25px", borderRadius: "10px", marginLeft: "25px", backgroundColor: "#2fdf75", color: "white" }} onClick={update}>Submit</button>
+                                            <button style={{ height: "50px", width: "60px", marginRight: "25px", borderRadius: "10px", marginLeft: "25px", backgroundColor: "#2fdf75", color: "white" }} onClick={() => update(selectedPills)}>Submit</button>
                                             <button onClick={() => setIsEdit(false)} style={{ height: "50px", width: "60px", marginRight: "25px", borderRadius: "10px", backgroundColor: "#eb445a", color: "white" }}>Close</button>
                                         </IonItemDivider>
                                     </IonCard>

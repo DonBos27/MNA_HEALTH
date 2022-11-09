@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import { auth, db, userCollection } from '../firebase/configFirebase'
 import { onAuthStateChanged } from 'firebase/auth';
 import { useHistory } from 'react-router';
-import { addDoc, setDoc, doc, collection, getDocs, getDoc } from "firebase/firestore";
+import { addDoc, setDoc, doc, collection, getDocs, getDoc, onSnapshot } from "firebase/firestore";
 import { getAuth } from 'firebase/auth';
 import { uid } from 'uid'
 function MedicalInfo() {
@@ -19,6 +19,7 @@ function MedicalInfo() {
     const [sex, setSex] = useState("");
     const [wheelchair, setWheelchair] = useState("");
     const [conditions, setConditions] = useState("");
+    const [allergies, setAllergies] = useState('')
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
     const [datas, setData] = useState([])
@@ -29,16 +30,7 @@ function MedicalInfo() {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                // const docRef = doc(db, "Users", user.uid);
-                // const docSnap = await getDoc(docRef);
-
-                // if (docSnap.exists()) {
-                //     console.log("Document data:", docSnap.data());
-                // } else {
-                //     // doc.data() will be undefined in this case
-                //     console.log("No such document!");
-                // }
-                getDoc(doc(db, "MedicalInfo", user.uid)).then(docSnap => {
+                onSnapshot(doc(db, "MedicalInfo", user.uid), (docSnap) => {
                     if (docSnap.exists()) {
                         const newData = docSnap.data();
                         setPostData(newData);
@@ -62,6 +54,7 @@ function MedicalInfo() {
             sex: sex,
             wheelchair: wheelchair,
             conditions: conditions,
+            allergies: allergies,
             name: name,
             number: number,
         })
@@ -74,6 +67,7 @@ function MedicalInfo() {
         setHeight(Height)
         setWheelchair(wheelchair)
         setConditions(conditions)
+        setAllergies(allergies)
         history.push("/medicalinformation", { direction: "forward" });
     }
 
@@ -129,9 +123,13 @@ function MedicalInfo() {
                                 <IonLabel position="stacked">Medical Conditions</IonLabel>
                                 <IonTextarea onIonChange={(e) => { setConditions(e.target.value) }} value={conditions}></IonTextarea>
                             </IonItem>
+                            <IonItem>
+                                <IonLabel position="stacked">Allergies</IonLabel>
+                                <IonTextarea onIonChange={(e) => { setAllergies(e.target.value) }} value={allergies}></IonTextarea>
+                            </IonItem>
                         </div>
                         {/* <h5 style={{ marginLeft: "15px", color: "white" }}>Emergency Contact</h5> */}
-                        <hr />
+                        {/* <IonItemDivider /> */}
                         <div className="emergency">
                             <IonItem>
                                 <IonLabel position="stacked">Name</IonLabel>
@@ -174,6 +172,10 @@ function MedicalInfo() {
                             <IonItem>
                                 <IonLabel position="stacked">Medical Conditions</IonLabel>
                                 <IonInput disabled>{postData.conditions}</IonInput>
+                            </IonItem>
+                            <IonItem>
+                                <IonLabel position="stacked">Allergiess</IonLabel>
+                                <IonInput disabled>{postData.allergies}</IonInput>
                             </IonItem>
                         </div>
                         <div className="emergency">

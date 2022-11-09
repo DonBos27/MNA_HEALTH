@@ -13,12 +13,13 @@ import { getAuth } from "firebase/auth";
 function Appoint() {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpen2, setIsOpen2] = useState(false);
-    // const [data, setData] = useState([])
     const [postData, setPostData] = useState([])
     const [name, setName] = useState("");
     const [jobs, setJobs] = useState("");
     const [time, setTime] = useState("");
     const [date, setDate] = useState("");
+    const [id, setId] = useState("");
+    const [selectedPills, setSelectedPills] = useState();
     const history = useHistory()
     const auth = getAuth();
     const user = auth.currentUser;
@@ -40,11 +41,10 @@ function Appoint() {
     }, [])
 
     function AddDoctor() {
-        // event.preventDefault();
         getDoc(doc(appointmentCollection, user.uid)).then(
             (docSnap) => {
                 if (docSnap.exists()) {
-                    const data = { name,jobs, time, date }
+                    const data = { name, jobs, time, date }
                     const newData = docSnap.data();
                     console.log(newData)
                     updateDoc(doc(appointmentCollection, user.uid), {
@@ -53,54 +53,58 @@ function Appoint() {
                 }
             }
         )
-        // getDoc(doc(db, "appointment", user.uid)).then(docSnap => {
-        //     if (docSnap.exists()) {
-        //         const data = { name, jobs, time, date }
-        //         const newData = docSnap.data();
-        //         console.log(typeof newData);
-        //         console.log(newData.Pills)
-        //         const don = newData.Pills
-        //         don.push(data)
-        //         console.log(docSnap.data())
-        //         updateDoc(doc(db, 'medical', user.uid), {
-        //             Pills: don
-        //         })
-        //         console.log()
-        //     } else {
-        //         const data = [{ name, jobs, time, date }]
-        //         setDoc(doc(db, "medical", user.uid), {
-        //             Pills: data
-        //         })
-        //         console.log("No such document!");
-        //     }
-
-        // })
-
-        // setData([{ time, name, jobs, date }, ...data]);
-        // setTime("")
-        // setName("")
-        // setJobs("")
-        // setDate("")
-        // history.push("/appointreminder", { direction: "forward" });
-        // console.log('added')
     }
-    const del = (deleteId) => {
-        // const datas = [{ name, jobs, time, date }]
-        // const docRef = doc(db, 'appointment', user.uid);
-        // updateDoc(docRef, {
-        //     Data: datas.filter(data => data.id !== deleteId)
-        //     // Data: arrayRemove(datas)
-        // });
-        // console.log(updateDoc)
-        console.log("deleted")
+    const del = (index) => {
+        console.log(index)
+        getDoc(doc(appointmentCollection, user.uid)).then(docSnap => {
+            if (docSnap.exists()) {
+                const newData = docSnap.data();
+                console.log(newData)
+                const goals = newData.Data
+                console.log(goals)
+                const appointment = goals.filter(goal => goal.name !== index)
+                console.log("Hi", appointment)
+                console.log(goals)
+                const data = { name, jobs, time, date }
+                updateDoc(doc(appointmentCollection, user.uid), {
+                    Data: appointment
+                })
+            }
+        })
+        console.log("Delete")
     }
-    const update = () => {
-        // const datas = [{ name, jobs, time, date }]
-        // const docRef = doc(db, 'appointment', user.uid);
-        // updateDoc(docRef, {
-        //     Data: datas
-        // });
-        // console.log("update")
+    const update = (object) => {
+        console.log(object)
+        getDoc(doc(appointmentCollection, user.uid)).then(docSnap => {
+            if (docSnap.exists()) {
+                const newData = docSnap.data();
+                const goals = newData.Data
+                console.log(goals)
+
+                goals.map((goal) => {
+                    if (goal.name === selectedPills.name) {
+                        goal.name = name
+                        goal.jobs = jobs
+                        goal.time = time
+                        goal.date = date
+                    }
+                })
+                console.log(goals)
+                updateDoc(doc(appointmentCollection, user.uid), {
+                    Data: goals
+                })
+            }
+        })
+        setTime("")
+        // setPills("")
+        setDate("")
+        history.push("/appointreminder", { direction: "forward" });
+        console.log("update")
+    }
+    const openModal = (object) => {
+        setIsOpen2(true);
+        console.log(object)
+        setSelectedPills(object)
     }
 
     return (
@@ -138,9 +142,9 @@ function Appoint() {
                                     <div>
                                         <h2 style={{ paddingLeft: "15px", color: "red" }}>
                                             {item.name}
-                                            <IonIcon icon={trashBin} className="del" style={{ paddingLeft: "125px" }} color="danger" onClick={del} />
-                                            <IonIcon icon={createSharp} style={{ marginLeft: "20px" }} color="warning" onClick={() => setIsOpen2(true)} />
-                                            <IonModal isOpen2={isOpen} className="content" style={{}}>
+                                            <IonIcon icon={trashBin} className="del" style={{ paddingLeft: "125px" }} color="danger" onClick={() => del(item.name)} />
+                                            <IonIcon icon={createSharp} style={{ marginLeft: "20px" }} color="warning" onClick={() => openModal(item)} />
+                                            <IonModal isOpen={isOpen2} className="content" style={{}}>
                                                 <Header title="Fills The Form" />
                                                 <IonCard className='pills-card'>
                                                     <IonItemDivider>
@@ -156,7 +160,7 @@ function Appoint() {
                                                         <IonInput type='date' value={date} onIonChange={(e) => setDate(e.target.value)} />
                                                     </IonItemDivider>
                                                     <IonItemDivider className='btnModal' style={{ paddingBottom: "10px" }}>
-                                                        <button style={{ height: "50px", width: "60px", marginRight: "25px", borderRadius: "10px", marginLeft: "25px", backgroundColor: "#2fdf75", color: "white" }} onClick={update}>Submit</button>
+                                                        <button style={{ height: "50px", width: "60px", marginRight: "25px", borderRadius: "10px", marginLeft: "25px", backgroundColor: "#2fdf75", color: "white" }} onClick={() => update(selectedPills)}>Submit</button>
                                                         <button onClick={() => setIsOpen2(false)} style={{ height: "50px", width: "60px", marginRight: "25px", borderRadius: "10px", backgroundColor: "#eb445a", color: "white" }}>Close</button>
                                                     </IonItemDivider>
                                                 </IonCard>

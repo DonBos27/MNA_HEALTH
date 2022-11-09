@@ -16,7 +16,7 @@
   border: orangered;
   border-radius: 10px;
   margin-top: 30px;
-  margin-left: 55px;
+  margin-left: -55px;
   width: 70%;
   height: 35px;
   box-shadow: 5px 5px 5px #222428;
@@ -24,7 +24,7 @@
 .loginForm button {
   position: absolute;
   left: 16.36%;
-  top: 83%;
+  top: 82%;
   width: 65%;
   height: 40px;
   color: white;
@@ -44,6 +44,7 @@
 }
 .input {
   background-color: #d9d9d9;
+  /* margin-right: 250px; */
 }
 #logo {
   margin-top: 45px;
