@@ -134,10 +134,10 @@ const Login = () => {
                     <img src={loginPic} style={{ width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
                     <img src={login1} style={{ width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
                     <img src={login2} style={{ width: "25%", borderRadius: "50px", backgroundColor: "#0e6c94", marginLeft: "20px" }} />
-                    <div>
+                    {/* <div>
                         <IonIcon icon={logoGoogle} size="large" style={{ marginTop: "35px", marginLeft: "130px" }} onClick={google} />
                         <IonIcon icon={logoFacebook} size="large" style={{ marginTop: "35px", marginLeft: "25px" }} onClick={facebook}/>
-                    </div>
+                    </div> */}
                     <input
                         type="email"
                         placeholder="E-mail"

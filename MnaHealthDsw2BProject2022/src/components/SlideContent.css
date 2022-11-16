@@ -1,0 +1,48 @@
+.slide {
+  --background: #0E6C94;
+}
+.title1 {
+  position: absolute;
+  width: 277px;
+  height: 41px;
+  left: 43px;
+  top: 75px;
+  font-family: "Sen";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: #7f2f86;
+}
+.title2 {
+  
+  position: absolute;
+  width: 165px;
+  height: 39px;
+  left: 103px;
+  top: 110px;
+  font-family: 'Sen';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;  
+  color: #FFFFFF;
+}
+.text {
+  position: absolute;
+  width: 268px;
+  /* text-align: center; */
+  height: 14px;
+  left: 45px;
+  top: 520px;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #FFFFFF;
+}
+.images {
+  position: absolute;
+  margin-left: 45px;
+  margin-top:50px;
+}

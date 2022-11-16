@@ -51,6 +51,13 @@ function Appoint() {
                         Data: arrayUnion(data)
                     })
                 }
+                else {
+                    const data = [{ name, jobs, time, date }]
+                    setDoc(doc(appointmentCollection, user.uid), {
+                        Data: data
+                    })
+                    console.log("No such document!");
+                }
             }
         )
     }

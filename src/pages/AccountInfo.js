@@ -41,7 +41,7 @@ const AccountInfo = () => {
             <IonContent className='main'>
                 <div className="account" >
                     <div className='top' >
-                        <img src={postData.photo} />
+                        {/* <img src={postData.photo} /> */}
                         <h2>{postData.fullName}</h2>
                     </div >
                     <div className='accountinfo'>

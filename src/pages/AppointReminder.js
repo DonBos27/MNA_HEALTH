@@ -49,7 +49,7 @@ const AppointReminder = () => {
     return (
         <IonPage>
             <IonContent className="">
-                <Header title="Medical Appointment"/>
+                <Header title="Appointment"/>
                 <Appoint/>
             </IonContent>
             <TabBar/>

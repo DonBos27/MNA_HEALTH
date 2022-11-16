@@ -28,6 +28,9 @@
   line-height: 38px;  
   color: #FFFFFF;
 }
+#info{
+  width: 180px;
+}
 .text {
   position: absolute;
   width: 268px;

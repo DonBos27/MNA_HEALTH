@@ -3,7 +3,7 @@ import { IonPage, IonContent, IonCard, IonItem, IonLabel, IonInput, IonButton } 
 import Header from "../components/Header"
 import { useState } from "react"
 import { getAuth, updateEmail, updatePassword, deleteUser } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { deleteDoc, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/configFirebase";
 import { useHistory } from "react-router";
 
@@ -16,7 +16,7 @@ const Privacy = () => {
     const user = auth.currentUser;
     const Update = () => {
         updateEmail(user, email).then(() => {
-            setDoc(doc(db, "Users", user.uid), {
+            updateDoc(doc(db, "Users", user.uid), {
                 email: email,
             })
             // Update successful
@@ -32,9 +32,14 @@ const Privacy = () => {
             // An error ocurred
             // ...
         });
+        history.push("/accountinformation")
     }
     const Delete = () => {
         deleteUser(user).then(() => {
+            deleteDoc(doc(db, "Users", user.uid))
+            deleteDoc(doc(db, "medical", user.uid))
+            deleteDoc(doc(db, "appointment", user.uid))
+            deleteDoc(doc(db, "MedicalInfo", user.uid))
             history.pushState('/login')
             // User deleted.
         }).catch((error) => {

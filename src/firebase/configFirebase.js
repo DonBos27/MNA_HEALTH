@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore, collection } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 import { getDatabase } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -42,3 +43,7 @@ export const medicalCollection = collection(db, "medical");
 // connect to appointmentCollection
 
 export const appointmentCollection = collection(db, "appointment");
+
+// connect to storage
+
+export const storage = getStorage();

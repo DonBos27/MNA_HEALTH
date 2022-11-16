@@ -4,13 +4,14 @@ import {
     IonCard,
 } from '@ionic/react';
 import Header from '../components/Header';
-import { person, chevronForward, notifications, lockClosed, globeSharp, callOutline, informationCircle } from "ionicons/icons";
+import { person, chevronForward, globeSharp, informationCircle } from "ionicons/icons";
 import "./Setting.css";
 import TabBar from '../components/TabBar';
 import Chip from '../components/Chip';
-import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
-import { getAuth } from 'firebase/auth';
+import { getAuth, deleteUser } from "firebase/auth";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../firebase/configFirebase";
 const Setting = () => {
     const history = useHistory();
 
@@ -39,6 +40,19 @@ const Setting = () => {
     const Contact = () => {
         history.push('about')
         console.log("about");
+    }
+    const Delete = () => {
+        deleteUser(user).then(() => {
+            deleteDoc(doc(db, "Users", user.uid))
+            deleteDoc(doc(db, "medical", user.uid))
+            deleteDoc(doc(db, "appointment", user.uid))
+            deleteDoc(doc(db, "MedicalInfo", user.uid))
+            history.pushState('/login')
+            // User deleted.
+        }).catch((error) => {
+            // An error ocurred
+            // ...
+        });
     }
     return (
         <IonPage >
@@ -74,20 +88,9 @@ const Setting = () => {
                             IconRight={chevronForward}
                             onclick={Contact}
                         />
-                        <Chip
-                            Label="Privacy & Security"
-                            IconLeft={lockClosed}
-                            IconRight={chevronForward}
-                            onclick={Security}
-                        />
-                        {/* <Chip
-                            Label="Notification"
-                            IconLeft={notifications}
-                            IconRight={chevronForward}
-                            onclick={Notification}
-                        /> */}
                     </IonCard>
                 </div>
+                <button style={{ marginTop: "50px", height: "50px", width: "150px", marginLeft: "110px", borderRadius: "10px", backgroundColor: "#7f2f86", color: "white" }} onClick={Delete}>DELETE ACCOUNT</button>
             </IonContent>
             <TabBar />
         </IonPage>

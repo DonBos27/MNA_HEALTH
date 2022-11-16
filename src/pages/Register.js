@@ -13,9 +13,12 @@ import { Camera, CameraResultType, CameraSource, } from '@capacitor/camera';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { useState } from 'react';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { auth, db, userCollection } from '../firebase/configFirebase';
+import { auth, db, userCollection, storage } from '../firebase/configFirebase';
 import { addDoc, setDoc, doc, collection } from "firebase/firestore";
 import { useHistory } from 'react-router-dom';
+import { getDownloadURL, uploadBytesResumable, ref, uploadBytes } from "firebase/storage";
+import { getAuth } from 'firebase/auth';
+import { uid } from 'uid'
 
 
 function Register() {
@@ -28,6 +31,10 @@ function Register() {
     const history = useHistory();
     const [present] = useIonToast();
 
+
+    // Verified if user exist
+    const auth = getAuth();
+    const user = auth.currentUser;
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if (user) {
@@ -129,9 +136,6 @@ function Register() {
                 });
         }
     }
-    const handleLogin = () => {
-        history.push("/login", { direction: "forward" });
-    }
     defineCustomElements(window);
     const takePhoto = async () => {
         const photo = await Camera.getPhoto({
@@ -139,9 +143,25 @@ function Register() {
             source: CameraSource.Camera,
             quality: 100,
         });
-        setPhoto(photo.webPath)
+        const name = new Date().getTime() + photo.format;
+        const storageRef = ref(storage, `profilesPictures/${name}`);
+        const uploadTask = uploadBytesResumable(storageRef, photo);
+        uploadTask.on('state_changed', (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+        }, (error) => {
+            console.log(error);
+        }, () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                setPhoto(photo.webPath)
+                console.log('File available at', downloadURL);
+            });
+        });
     };
-    // storage(`profilesPictures/${user.uid}/`)
+    const handleLogin = () => {
+        history.push("/login", { direction: "forward" });
+    }
+
     return (
         <IonPage >
             <IonContent fullscreen className="main">

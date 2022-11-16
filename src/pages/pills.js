@@ -29,7 +29,6 @@ function Remind() {
         if (user) {
             onSnapshot(doc(db, "medical", user.uid), (doc) => {
                 if (doc.exists()) {
-                    // let items = [];
                     const newData = doc.data();
                     const pills = newData.Pills;
                     console.log(pills)
@@ -50,12 +49,8 @@ function Remind() {
                 const newData = docSnap.data();
                 console.log(typeof newData);
                 console.log(newData.Pills)
-                const myData = newData.Pills
-                console.log(myData)
-                myData.push(data)
-                console.log(docSnap.data())
                 updateDoc(doc(db, 'medical', user.uid), {
-                    Pills: myData
+                    Pills: arrayUnion(data)
                 })
                 console.log()
             } else {
@@ -122,7 +117,7 @@ function Remind() {
     return (
         <IonPage >
             <IonContent className='bg'>
-                <Header title="Pills Reminder" />
+                <Header title="Pills" />
                 <button onClick={() => setIsOpen(true)} slot='fixed' style={{ borderRadius: "50px", height: "60px", width: "60px", marginTop: "600px", marginLeft: "275px", backgroundColor: "#7f2f86", color: "white" }}>
                     <IonIcon icon={add} />
                 </button>

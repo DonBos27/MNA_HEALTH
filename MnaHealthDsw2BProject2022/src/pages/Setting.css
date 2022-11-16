@@ -1,0 +1,22 @@
+.main {
+  --background: rgba(14, 108, 148, 0.69);
+  /* position: absolute; */
+}
+.set h2 {
+  margin-left: 5%;
+  font-size: 15px;
+  font-weight: bold;
+  /* padding-top: 30px; */
+}
+h2 {
+  color: white;
+}
+.card {
+  top: 0px;
+  width:90%;
+  padding: 10px 20px;
+  background-color: white;
+  opacity: 0.5;
+  border-radius: 20px;
+  height: 90px;
+}
