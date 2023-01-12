@@ -1,4 +1,4 @@
-# MNA_HEALTH DSW02B1  Project
+# MNA_HEALTH DSW02B1 School Project
 To Get A Request Of The Nearest Hospital;
 https://cors-anywhere.herokuapp.com/
 
